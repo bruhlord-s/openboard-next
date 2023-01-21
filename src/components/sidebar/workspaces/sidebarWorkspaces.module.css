@@ -1,0 +1,10 @@
+.sidebarWorkspaces {
+}
+
+.sidebarWorkspaces__title {
+  font-size: var(--fs-normal);
+  color: var(--light-gray);
+  font-weight: 400;
+
+  margin-bottom: 1.5em;
+}
