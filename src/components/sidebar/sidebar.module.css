@@ -1,0 +1,14 @@
+.sidebar {
+  padding: 2em;
+  border-right: 1px solid var(--gray);
+
+  display: grid;
+  grid-template-rows: 1fr 10fr 2fr;
+}
+
+.sidebar__logo {
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+}
