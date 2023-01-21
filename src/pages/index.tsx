@@ -1,8 +1,9 @@
+import DashboardLayout from "@/layouts/dashboard-layout/DashboardLayout";
 import { NextPage } from "next";
 import React from "react";
 
 const Dashboard: NextPage = () => {
-  return <></>;
+  return <DashboardLayout>a</DashboardLayout>;
 };
 
 export default Dashboard;
