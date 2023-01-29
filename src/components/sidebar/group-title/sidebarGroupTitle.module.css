@@ -1,12 +1,43 @@
 .sidebarGroupTitle {
+  width: 100%;
+
+  display: flex;
+  align-self: center;
+  justify-content: space-between;
+
+  user-select: none;
+}
+
+.sidebarGroupTitle__toggler {
   display: flex;
   align-items: center;
   gap: 1em;
 
   cursor: pointer;
-  user-select: none;
 }
 
 .sidebarGroupTitle__title {
   font-weight: 500;
+}
+
+.sidebarGroupTitle__icon_closed {
+  transform: rotate(90deg);
+}
+
+.sidebarGroupTitle__menuBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  width: 32px;
+  height: 32px;
+
+  cursor: pointer;
+  transition: .1s;
+}
+
+.sidebarGroupTitle__menuBtn:hover {
+  background-color: var(--extra-light-gray);
 }

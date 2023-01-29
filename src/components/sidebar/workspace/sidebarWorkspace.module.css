@@ -1,0 +1,35 @@
+.sidebarWorkspace {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-radius: 6px;
+    padding: .5em 1em;
+    transition: .1s;
+
+    user-select: none;
+}
+
+.sidebarWorkspace:hover {
+    background-color: var(--extra-light-gray);
+}
+
+.sidebarWorkspace__title {
+    cursor: pointer;
+}
+
+.sidebarWorkspace__menuBtn {
+    visibility: hidden;
+    cursor: pointer;
+
+    width: 24px;
+    height: 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebarWorkspace:hover .sidebarWorkspace__menuBtn {
+    visibility: visible;
+}

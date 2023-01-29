@@ -9,6 +9,7 @@ const SidebarWorkspaces: FC = () => {
       <h3 className={styles.sidebarWorkspaces__title}>Your workspaces</h3>
       <div className={styles.sidebarWorkspaces__groups}>
         <SidebarGroup />
+        
       </div>
     </div>
   );

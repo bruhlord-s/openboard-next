@@ -4,6 +4,8 @@
 
   display: grid;
   grid-template-rows: 1fr 10fr 2fr;
+
+  min-width: 300px;
 }
 
 .sidebar__logo {

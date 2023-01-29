@@ -17,19 +17,28 @@ const SidebarGroupTitle: FC<SidebarGroupTitleProps> = ({
   return (
     <div
       className={styles.sidebarGroupTitle}
-      onClick={() => setIsOpen(!isOpen)}
     >
-      <p className={styles.sidebarGroupTitle__title}>{title}</p>
-      <Image
-        src={
-          isOpen
-            ? "icons/sidebar-group-open.svg"
-            : "icons/sidebar-group-close.svg"
-        }
-        alt="open"
-        width={isOpen ? 16 : 9}
-        height={isOpen ? 8 : 18}
-      />
+      <div  
+        className={styles.sidebarGroupTitle__toggler}
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <p className={styles.sidebarGroupTitle__title}>{title}</p>
+        <Image
+          style={isOpen ? {} : {transform: 'rotate(-90deg)'}}
+          src={"icons/sidebar-group-open.svg"}
+          alt="open"
+          width={12}
+          height={6}
+        />
+      </div>
+      <div className={styles.sidebarGroupTitle__menuBtn}>
+        <Image
+          src={"icons/menu.svg"}
+          alt="menu"
+          width={16}
+          height={2}
+        />
+      </div>
     </div>
   );
 };
