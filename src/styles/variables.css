@@ -1,7 +1,9 @@
 :root {
   --gray: #7c7c7c;
   --light-gray: #838383;
-  --extra-light-gray: #E7E7E7;
+  --extra-light-gray: #e7e7e7;
+
+  --accent-color: #3e7bd8;
 
   --fs-normal: 16px;
 }
