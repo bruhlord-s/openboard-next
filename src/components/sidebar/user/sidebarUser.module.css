@@ -1,0 +1,16 @@
+.sidebarUser {
+  display: flex;
+  align-items: flex-start;
+  align-items: center;
+  gap: 1em;
+}
+
+.sidebarUser__info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3em;
+}
+
+.sidebarUser__name {
+  font-weight: 500;
+}

@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import Logo from "../logo/Logo";
 
 import styles from "./sidebar.module.css";
+import SidebarUser from "./user/SidebarUser";
 import SidebarWorkspaces from "./workspaces/SidebarWorkspaces";
 
 const Sidebar: FC = () => {
@@ -12,6 +13,9 @@ const Sidebar: FC = () => {
       </div>
       <div className={styles.sidebar__workspaces}>
         <SidebarWorkspaces />
+      </div>
+      <div className={styles.sidebar__user}>
+        <SidebarUser />
       </div>
     </aside>
   );

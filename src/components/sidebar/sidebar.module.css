@@ -3,7 +3,7 @@
   border-right: 1px solid var(--gray);
 
   display: grid;
-  grid-template-rows: 1fr 10fr 2fr;
+  grid-template-rows: 1fr 11fr 1fr;
 
   min-width: 300px;
 }
@@ -13,4 +13,9 @@
 
   display: flex;
   justify-content: center;
+}
+
+.sidebar__user {
+  display: flex;
+  align-items: flex-end;
 }
