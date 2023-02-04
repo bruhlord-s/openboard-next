@@ -1,0 +1,9 @@
+.timeEstimated {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.timeEstimated {
+  color: var(--light-gray);
+}

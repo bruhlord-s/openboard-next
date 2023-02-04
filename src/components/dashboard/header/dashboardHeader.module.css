@@ -1,0 +1,18 @@
+.dashboardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dashboardHeader__title {
+  font-weight: 500;
+}
+
+.dashboardHeader__actions {
+  display: flex;
+  gap: 1em;
+}
+
+.dashboardHeader__actions > * {
+  width: 128px;
+}

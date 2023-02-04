@@ -13,7 +13,9 @@ const DashboardLayout: FC<DashboardLayoutProps> = ({
   return (
     <div className={styles.dashboardLayout}>
       <Sidebar />
-      <main className={styles.dashboardLayout__content}>{children}</main>
+      <div className={styles.dashboardLayout__contentWrapper}>
+        <main className={styles.dashboardLayout__content}>{children}</main>
+      </div>
     </div>
   );
 };

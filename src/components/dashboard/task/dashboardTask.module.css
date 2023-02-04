@@ -1,0 +1,27 @@
+.dashboardTask {
+  /* font-size: var(--fs-small); */
+
+  border: 1px solid #000;
+  border-radius: 6px;
+  padding: 0.5em 1em;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+
+  user-select: none;
+  cursor: pointer;
+
+  transition: 0.1s;
+}
+
+.dashboardTask:hover {
+  -webkit-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  -moz-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+}
+
+.dashboardTask__info {
+  display: flex;
+  justify-content: space-between;
+}

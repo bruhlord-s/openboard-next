@@ -4,3 +4,15 @@
   display: grid;
   grid-template-columns: 4fr 20fr;
 }
+
+.dashboardLayout__contentWrapper {
+  background: radial-gradient(
+    56.79% 56.79% at 49.96% 43.21%,
+    rgba(62, 123, 216, 0.15) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.dashboardLayout__content {
+  padding: 2em;
+}
