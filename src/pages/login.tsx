@@ -1,14 +1,15 @@
-import AuthCard from "@/components/auth-card/AuthCard";
+import AuthCard from "@/components/auth/card/AuthCard";
+import AuthSignIn from "@/components/auth/sign-in/AuthSignIn";
 import AuthLayout from "@/layouts/auth-layout/AuthLayout";
 import { NextPage } from "next";
 import React from "react";
 
-import styles from "../styles/modules/login.module.css";
-
 const LoginPage: NextPage = () => {
   return (
     <AuthLayout>
-      <AuthCard title="Sign In" />
+      <AuthCard title="Sign In">
+        <AuthSignIn />
+      </AuthCard>
     </AuthLayout>
   );
 };

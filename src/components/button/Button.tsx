@@ -5,11 +5,12 @@ import styles from "./button.module.css";
 interface ButtonProps {
   title: string;
   style?: CSSProperties;
+  type?: "submit";
 }
 
-const Button: FC<ButtonProps> = ({ title, style }: ButtonProps) => {
+const Button: FC<ButtonProps> = ({ title, style, type }: ButtonProps) => {
   return (
-    <button className={styles.button} style={style}>
+    <button className={styles.button} style={style} type={type}>
       {title}
     </button>
   );

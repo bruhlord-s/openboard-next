@@ -1,0 +1,25 @@
+.inputBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8em;
+}
+
+.inputBlock__info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.inputBlock__input {
+  border: 1px solid var(--gray);
+  padding: 0.5em 1em;
+  border-radius: 6px;
+  font-size: inherit;
+}
+
+.inputBlock__input::placeholder {
+  color: var(--gray);
+}
+
+.inputBlock__error {
+  color: var(--error-color);
+}

@@ -12,4 +12,5 @@
 .authCard__title {
   font-size: var(--fs-large);
   font-weight: 700;
+  margin-bottom: 2.2em;
 }

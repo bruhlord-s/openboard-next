@@ -1,0 +1,23 @@
+.authSignUp {
+  width: 300px;
+}
+
+.authSignUp__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2em;
+}
+
+.authSignUp__inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+
+  width: 100%;
+}
+
+.authSignUp__submit {
+  display: flex;
+  justify-content: center;
+}

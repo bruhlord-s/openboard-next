@@ -1,6 +1,7 @@
 .button {
   border: 1px solid var(--accent-color);
-  color: var(--accent-color);
+  background-color: var(--accent-color);
+  color: #fff;
   border-radius: 6px;
   font-size: var(--fs-normal);
   padding: 8px;
@@ -10,6 +11,10 @@
 }
 
 .button:hover {
+  cursor: pointer;
+}
+
+/* .button:hover {
   background-color: var(--accent-color);
   color: #fff;
-}
+} */
