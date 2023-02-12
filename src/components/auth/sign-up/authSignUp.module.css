@@ -9,6 +9,10 @@
   gap: 2em;
 }
 
+.authSignUp__error {
+  margin-bottom: 16px;
+}
+
 .authSignUp__inputs {
   display: flex;
   flex-direction: column;

@@ -20,7 +20,7 @@ const ErrorMessage: FC<ErrorMessageProps> = ({
           src="/icons/info-circle.svg"
         />
       </div>
-      <p>{message}</p>
+      <p className={styles.errorMessage__message}>{message}</p>
     </div>
   );
 };

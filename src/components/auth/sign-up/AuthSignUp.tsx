@@ -1,4 +1,5 @@
 import Button from "@/components/button/Button";
+import ErrorMessage from "@/components/error-message/ErrorMessage";
 import InputBlock from "@/components/input-block/InputBlock";
 import { Form, Formik } from "formik";
 import React, { FC } from "react";
@@ -9,6 +10,9 @@ import styles from "./authSignUp.module.css";
 const AuthSignUp: FC = () => {
   return (
     <div className={styles.authSignUp}>
+      <div className={styles.authSignUp__error}>
+        <ErrorMessage message="Email already in use" />
+      </div>
       <Formik
         initialValues={{
           email: "",
