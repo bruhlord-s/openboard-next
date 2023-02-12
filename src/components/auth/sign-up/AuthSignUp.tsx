@@ -1,18 +1,42 @@
 import Button from "@/components/button/Button";
 import ErrorMessage from "@/components/error-message/ErrorMessage";
 import InputBlock from "@/components/input-block/InputBlock";
+import instance from "@/plugins/axios";
 import { Form, Formik } from "formik";
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import * as Yup from "yup";
 
 import styles from "./authSignUp.module.css";
+import SignUpValues from "./types/SignUpValues";
 
 const AuthSignUp: FC = () => {
+  const [error, setError] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  const handleSubmit = (values: SignUpValues) => {
+    if (isLoading) return;
+
+    setError("");
+    setIsLoading(true);
+
+    instance
+      .post("api/register", values)
+      .then((res) => {
+        localStorage.setItem("auth_token", res.data.token);
+      })
+      .catch((err) => {
+        setError(err.response.data.message);
+      })
+      .finally(() => setIsLoading(false));
+  };
+
   return (
     <div className={styles.authSignUp}>
-      <div className={styles.authSignUp__error}>
-        <ErrorMessage message="Email already in use" />
-      </div>
+      {!!error && (
+        <div className={styles.authSignUp__error}>
+          <ErrorMessage message={error} />
+        </div>
+      )}
       <Formik
         initialValues={{
           email: "",
@@ -31,9 +55,7 @@ const AuthSignUp: FC = () => {
             "Doesn't match"
           ),
         })}
-        onSubmit={(values) => {
-          console.log(values);
-        }}
+        onSubmit={(values: SignUpValues) => handleSubmit(values)}
       >
         <Form>
           <div className={styles.authSignUp__form}>
@@ -64,7 +86,12 @@ const AuthSignUp: FC = () => {
               />
             </div>
             <div className={styles.authSignUp__submit}>
-              <Button title="Sign In" style={{ width: 100 }} type="submit" />
+              <Button
+                title="Sign In"
+                style={{ width: 100 }}
+                type="submit"
+                disabled={isLoading}
+              />
             </div>
           </div>
         </Form>
