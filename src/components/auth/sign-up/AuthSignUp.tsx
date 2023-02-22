@@ -3,6 +3,7 @@ import ErrorMessage from "@/components/error-message/ErrorMessage";
 import InputBlock from "@/components/input-block/InputBlock";
 import instance from "@/plugins/axios";
 import { Form, Formik } from "formik";
+import { Router, useRouter } from "next/router";
 import React, { FC, useState } from "react";
 import * as Yup from "yup";
 
@@ -10,6 +11,8 @@ import styles from "./authSignUp.module.css";
 import SignUpValues from "./types/SignUpValues";
 
 const AuthSignUp: FC = () => {
+  const router = useRouter();
+
   const [error, setError] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -23,6 +26,7 @@ const AuthSignUp: FC = () => {
       .post("api/register", values)
       .then((res) => {
         localStorage.setItem("auth_token", res.data.token);
+        router.push("/");
       })
       .catch((err) => {
         setError(err.response.data.message);
