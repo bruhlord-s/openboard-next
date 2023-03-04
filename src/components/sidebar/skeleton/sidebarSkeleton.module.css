@@ -1,0 +1,46 @@
+.sidebarSkeleton {
+  padding: 2em;
+  border-right: 1px solid var(--gray);
+
+  display: grid;
+  grid-template-rows: 1fr 11fr 1fr;
+
+  min-width: 300px;
+  max-width: 350px;
+}
+
+.sidebarSkeleton__logo {
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+}
+
+.sidebarSkeleton__workspaces {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.sidebarSkeleton__group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sidebarSkeleton__user {
+  display: flex;
+  align-items: flex-end;
+}
+
+.sidebarSkeleton__user {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sidebarSkeleton__userData {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}

@@ -6,6 +6,7 @@
   grid-template-rows: 1fr 11fr 1fr;
 
   min-width: 300px;
+  max-width: 350px;
 }
 
 .sidebar__logo {

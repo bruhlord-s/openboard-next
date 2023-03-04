@@ -7,6 +7,7 @@ interface ButtonProps {
   style?: CSSProperties;
   type?: "submit";
   disabled?: boolean;
+  onClick?: () => any;
 }
 
 const Button: FC<ButtonProps> = ({
@@ -14,6 +15,7 @@ const Button: FC<ButtonProps> = ({
   style,
   type,
   disabled,
+  onClick
 }: ButtonProps) => {
   return (
     <button
@@ -21,6 +23,7 @@ const Button: FC<ButtonProps> = ({
       style={style}
       type={type}
       disabled={disabled}
+      onClick={onClick}
     >
       {title}
     </button>

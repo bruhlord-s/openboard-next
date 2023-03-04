@@ -1,9 +1,9 @@
 import Button from "@/components/button/Button";
 import ErrorMessage from "@/components/error-message/ErrorMessage";
 import InputBlock from "@/components/input-block/InputBlock";
-import instance from "@/plugins/axios";
 import { Form, Formik } from "formik";
-import { Router, useRouter } from "next/router";
+import useAxios from "@/hooks/useAxios";
+import { useRouter } from "next/router";
 import React, { FC, useState } from "react";
 import * as Yup from "yup";
 
@@ -12,6 +12,7 @@ import SignUpValues from "./types/SignUpValues";
 
 const AuthSignUp: FC = () => {
   const router = useRouter();
+  const axios = useAxios();
 
   const [error, setError] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -22,8 +23,8 @@ const AuthSignUp: FC = () => {
     setError("");
     setIsLoading(true);
 
-    instance
-      .post("api/register", values)
+    axios
+      .post("register", values)
       .then((res) => {
         localStorage.setItem("auth_token", res.data.token);
         router.push("/");
