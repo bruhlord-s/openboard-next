@@ -53,7 +53,7 @@ const CreateGroupPopup: FC<PopupProps> = ({ open, setOpen }: PopupProps) => {
               </div>
               <div className={styles.createGroupPopup__submit}>
                 <Button
-                  title="Sign In"
+                  title="Create"
                   style={{ width: 100 }}
                   type="submit"
                   disabled={isLoading}

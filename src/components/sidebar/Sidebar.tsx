@@ -17,7 +17,7 @@ const Sidebar: FC<SidebarProps> = ({ user }: SidebarProps) => {
         <Logo />
       </div>
       <div className={styles.sidebar__workspaces}>
-        <SidebarWorkspaces />
+        <SidebarWorkspaces groups={user.groups} />
       </div>
       <div className={styles.sidebar__user}>
         <SidebarUser name={user.name} email={user.email} />

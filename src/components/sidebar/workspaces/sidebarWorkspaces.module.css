@@ -9,6 +9,10 @@
   margin-bottom: 0.75em;
 }
 
+.sidebarWorkspaces__emptyMessage {
+  margin-top: 24px;
+}
+
 .sidebarWorkspaces__addGroup {
   width: 100%;
   margin-top: 2em;

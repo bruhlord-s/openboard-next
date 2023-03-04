@@ -1,12 +1,20 @@
 import Button from "@/components/button/Button";
 import CreateGroupPopup from "@/popups/create-group/CreateGroupPopup";
+import Group from "@/types/Group";
 import React, { FC, useState } from "react";
 import SidebarGroup from "../group/SidebarGroup";
 
 import styles from "./sidebarWorkspaces.module.css";
 
-const SidebarWorkspaces: FC = () => {
-  const [isCreateGroupPopupOpen, setIsCreateGroupPopupOpen] = useState<boolean>(false);
+interface SidebarWorkspacesProps {
+  groups: Group[];
+}
+
+const SidebarWorkspaces: FC<SidebarWorkspacesProps> = ({
+  groups,
+}: SidebarWorkspacesProps) => {
+  const [isCreateGroupPopupOpen, setIsCreateGroupPopupOpen] =
+    useState<boolean>(false);
 
   const openCreateGroupPopup = () => {
     setIsCreateGroupPopupOpen(true);
@@ -15,16 +23,28 @@ const SidebarWorkspaces: FC = () => {
   return (
     <div className={styles.sidebarWorkspaces}>
       <h3 className={styles.sidebarWorkspaces__title}>Your workspaces</h3>
+      {groups.length < 1 && (
+        <p className={styles.sidebarWorkspaces__emptyMessage}>
+          You have no groups
+        </p>
+      )}
       <div className={styles.sidebarWorkspaces__groups}>
-        <SidebarGroup />
-        <SidebarGroup />
-        <SidebarGroup />
+        {groups.map((group, i) => (
+          <SidebarGroup group={group} key={i} />
+        ))}
       </div>
       <div className={styles.sidebarWorkspaces__addGroup}>
-        <Button title="Create new group" style={{ width: 200 }} onClick={openCreateGroupPopup} />
+        <Button
+          title="Create new group"
+          style={{ width: 200 }}
+          onClick={openCreateGroupPopup}
+        />
       </div>
 
-      <CreateGroupPopup open={isCreateGroupPopupOpen} setOpen={setIsCreateGroupPopupOpen} />
+      <CreateGroupPopup
+        open={isCreateGroupPopupOpen}
+        setOpen={setIsCreateGroupPopupOpen}
+      />
     </div>
   );
 };
