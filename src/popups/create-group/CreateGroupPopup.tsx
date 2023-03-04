@@ -10,7 +10,15 @@ import CreateGroupValues from "../types/CreateGroupValues";
 import InputBlock from "@/components/input-block/InputBlock";
 import Button from "@/components/button/Button";
 
-const CreateGroupPopup: FC<PopupProps> = ({ open, setOpen }: PopupProps) => {
+interface CreateGroupPopupProps extends PopupProps {
+  updateUserData: () => any;
+}
+
+const CreateGroupPopup: FC<CreateGroupPopupProps> = ({
+  open,
+  setOpen,
+  updateUserData,
+}: CreateGroupPopupProps) => {
   const [error, setError] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -26,8 +34,9 @@ const CreateGroupPopup: FC<PopupProps> = ({ open, setOpen }: PopupProps) => {
       .post("group", values)
       .then(() => {
         setOpen(false);
+        updateUserData();
       })
-      .catch((err) => setError(err.response.data.message))
+      .catch((err) => setError(err?.response?.data?.message))
       .finally(() => setIsLoading(false));
   };
 

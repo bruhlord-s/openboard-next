@@ -8,10 +8,12 @@ import styles from "./sidebarWorkspaces.module.css";
 
 interface SidebarWorkspacesProps {
   groups: Group[];
+  updateUserData: () => any;
 }
 
 const SidebarWorkspaces: FC<SidebarWorkspacesProps> = ({
   groups,
+  updateUserData,
 }: SidebarWorkspacesProps) => {
   const [isCreateGroupPopupOpen, setIsCreateGroupPopupOpen] =
     useState<boolean>(false);
@@ -44,6 +46,7 @@ const SidebarWorkspaces: FC<SidebarWorkspacesProps> = ({
       <CreateGroupPopup
         open={isCreateGroupPopupOpen}
         setOpen={setIsCreateGroupPopupOpen}
+        updateUserData={updateUserData}
       />
     </div>
   );

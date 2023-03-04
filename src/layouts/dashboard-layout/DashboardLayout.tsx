@@ -28,13 +28,21 @@ const DashboardLayout: FC<DashboardLayoutProps> = ({
 
   const axios = useAxios();
 
-  useEffect(() => {
+  const fetchUserData = () => {
     axios.get("/user").then((res) => setUser(res.data.data));
+  };
+
+  useEffect(() => {
+    fetchUserData();
   }, []);
 
   return (
     <div className={styles.dashboardLayout}>
-      {user.id === 0 ? <SidebarSkeleton /> : <Sidebar user={user} />}
+      {user.id === 0 ? (
+        <SidebarSkeleton />
+      ) : (
+        <Sidebar user={user} updateUserData={fetchUserData} />
+      )}
       <div className={styles.dashboardLayout__contentWrapper}>
         <main className={styles.dashboardLayout__content}>{children}</main>
       </div>
