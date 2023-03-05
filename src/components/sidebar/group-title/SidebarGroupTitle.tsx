@@ -15,16 +15,14 @@ const SidebarGroupTitle: FC<SidebarGroupTitleProps> = ({
   setIsOpen,
 }: SidebarGroupTitleProps) => {
   return (
-    <div
-      className={styles.sidebarGroupTitle}
-    >
-      <div  
+    <div className={styles.sidebarGroupTitle}>
+      <div
         className={styles.sidebarGroupTitle__toggler}
         onClick={() => setIsOpen(!isOpen)}
       >
         <p className={styles.sidebarGroupTitle__title}>{title}</p>
         <Image
-          style={isOpen ? {} : {transform: 'rotate(-90deg)'}}
+          style={isOpen ? {} : { transform: "rotate(-90deg)" }}
           src={"icons/sidebar-group-open.svg"}
           alt="open"
           width={12}
@@ -32,12 +30,7 @@ const SidebarGroupTitle: FC<SidebarGroupTitleProps> = ({
         />
       </div>
       <div className={styles.sidebarGroupTitle__menuBtn}>
-        <Image
-          src={"icons/menu.svg"}
-          alt="menu"
-          width={16}
-          height={2}
-        />
+        <Image src={"icons/menu.svg"} alt="menu" width={16} height={4} />
       </div>
     </div>
   );

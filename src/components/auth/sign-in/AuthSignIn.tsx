@@ -1,12 +1,39 @@
 import Button from "@/components/button/Button";
 import InputBlock from "@/components/input-block/InputBlock";
+import useAxios from "@/hooks/useAxios";
 import { Form, Formik } from "formik";
-import React, { FC } from "react";
+import { useRouter } from "next/router";
+import React, { FC, useState } from "react";
 import * as Yup from "yup";
 
 import styles from "./authSignIn.module.css";
+import { SignInValues } from "./types/SignInValues";
 
 const AuthSignIn: FC = () => {
+  const router = useRouter();
+  const axios = useAxios();
+
+  const [error, setError] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  const handleSubmit = (values: SignInValues) => {
+    if (isLoading) return;
+
+    setError("");
+    setIsLoading(true);
+
+    axios
+      .post("login", values)
+      .then((res) => {
+        localStorage.setItem("auth_token", res.data.token);
+        router.push("/");
+      })
+      .catch((err) => {
+        setError(err.response.data.message);
+      })
+      .finally(() => setIsLoading(false));
+  };
+
   return (
     <div className={styles.authSignIn}>
       <Formik
@@ -17,9 +44,7 @@ const AuthSignIn: FC = () => {
             .min(8, "Min 8 characters")
             .required("Required"),
         })}
-        onSubmit={(values) => {
-          console.log(values);
-        }}
+        onSubmit={(values) => handleSubmit(values)}
       >
         <Form>
           <div className={styles.authSignIn__form}>

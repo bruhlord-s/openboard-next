@@ -1,3 +1,4 @@
+import SidebarUserMenu from "@/menus/sidebar-user/SidebarUserMenu";
 import User from "@/types/User";
 import React, { FC } from "react";
 import Logo from "../logo/Logo";
@@ -23,9 +24,14 @@ const Sidebar: FC<SidebarProps> = ({ user, updateUserData }: SidebarProps) => {
           updateUserData={updateUserData}
         />
       </div>
-      <div className={styles.sidebar__user}>
-        <SidebarUser name={user.name} email={user.email} />
-      </div>
+      <SidebarUserMenu
+        trigger={
+          <div className={styles.sidebar__user}>
+            <SidebarUser email={user.email} name={user.name} />
+          </div>
+        }
+        position="right top"
+      />
     </aside>
   );
 };

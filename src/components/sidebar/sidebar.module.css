@@ -18,5 +18,15 @@
 
 .sidebar__user {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
+  padding-left: 10px;
+
+  user-select: none;
+  transition: 0.2s;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.sidebar__user:hover {
+  background-color: var(--extra-light-gray);
 }
