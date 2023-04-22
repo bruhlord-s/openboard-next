@@ -1,18 +1,24 @@
+import SidebarGroupMenu from "@/menus/sidebar-group/SidebarGroupMenu";
+import Group from "@/types/Group";
 import Image from "next/image";
 import React, { FC } from "react";
 
 import styles from "./sidebarGroupTitle.module.css";
 
 interface SidebarGroupTitleProps {
-  title: string;
+  group: Group;
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsEditModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsDeleteModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const SidebarGroupTitle: FC<SidebarGroupTitleProps> = ({
-  title,
+  group,
   isOpen,
   setIsOpen,
+  setIsEditModalOpen,
+  setIsDeleteModalOpen,
 }: SidebarGroupTitleProps) => {
   return (
     <div className={styles.sidebarGroupTitle}>
@@ -20,7 +26,7 @@ const SidebarGroupTitle: FC<SidebarGroupTitleProps> = ({
         className={styles.sidebarGroupTitle__toggler}
         onClick={() => setIsOpen(!isOpen)}
       >
-        <p className={styles.sidebarGroupTitle__title}>{title}</p>
+        <p className={styles.sidebarGroupTitle__title}>{group.name}</p>
         <Image
           style={isOpen ? {} : { transform: "rotate(-90deg)" }}
           src={"icons/sidebar-group-open.svg"}
@@ -29,9 +35,17 @@ const SidebarGroupTitle: FC<SidebarGroupTitleProps> = ({
           height={6}
         />
       </div>
-      <div className={styles.sidebarGroupTitle__menuBtn}>
-        <Image src={"icons/menu.svg"} alt="menu" width={16} height={4} />
-      </div>
+      <SidebarGroupMenu
+        trigger={
+          <div className={styles.sidebarGroupTitle__menuBtn}>
+            <Image src={"icons/menu.svg"} alt="menu" width={16} height={4} />
+          </div>
+        }
+        position="right center"
+        group={group}
+        setIsEditModalOpen={setIsEditModalOpen}
+        setIsDeleteModalOpen={setIsDeleteModalOpen}
+      />
     </div>
   );
 };

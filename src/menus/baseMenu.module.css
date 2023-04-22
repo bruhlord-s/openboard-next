@@ -5,3 +5,8 @@
   border: 1px solid #000;
   min-width: 200px;
 }
+
+.menu__items {
+  display: flex;
+  flex-direction: column;
+}

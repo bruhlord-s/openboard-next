@@ -23,7 +23,7 @@ const MenuItem: FC<MenuItemProps> = ({
       </div>
       <p
         className={
-          warning ? styles.menuItem__title : styles.menuItem__title_warning
+          !warning ? styles.menuItem__title : styles.menuItem__title_warning
         }
       >
         {title}

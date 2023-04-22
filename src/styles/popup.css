@@ -1,8 +1,8 @@
-[role="modal"].popup-overlay {
+[data-popup="modal"].popup-overlay {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-[role="modal"].popup-content {
+[role="dialog"].popup-content {
   padding: 1em 1.5em;
   background-color: #fff;
   border-radius: 12px;

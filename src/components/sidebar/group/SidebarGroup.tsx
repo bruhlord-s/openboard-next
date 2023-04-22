@@ -4,6 +4,8 @@ import SidebarGroupTitle from "../group-title/SidebarGroupTitle";
 import SidebarWorkspace from "../workspace/SidebarWorkspace";
 
 import styles from "./sidebarGroup.module.css";
+import EditGroupPopup from "@/popups/edit-group/EditGroupPopup";
+import DeleteGroupPopup from "@/popups/delete-group/DeleteGroupPopup";
 
 interface SidebarGroupProps {
   group: Group;
@@ -11,13 +13,17 @@ interface SidebarGroupProps {
 
 const SidebarGroup: FC<SidebarGroupProps> = ({ group }: SidebarGroupProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isEditModalOpen, setIsEditModalOpen] = useState<boolean>(false);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState<boolean>(false);
 
   return (
     <div className={styles.sidebarGroup}>
       <SidebarGroupTitle
-        title={group.name}
+        group={group}
         isOpen={isOpen}
         setIsOpen={setIsOpen}
+        setIsEditModalOpen={setIsEditModalOpen}
+        setIsDeleteModalOpen={setIsDeleteModalOpen}
       />
       {isOpen && (
         <div className={styles.sidebarGroup__workspaces}>
@@ -25,6 +31,17 @@ const SidebarGroup: FC<SidebarGroupProps> = ({ group }: SidebarGroupProps) => {
           <SidebarWorkspace name="another project" />
         </div>
       )}
+
+      <EditGroupPopup
+        open={isEditModalOpen}
+        setOpen={setIsEditModalOpen}
+        group={group}
+      />
+      <DeleteGroupPopup
+        open={isDeleteModalOpen}
+        setOpen={setIsDeleteModalOpen}
+        group={group}
+      />
     </div>
   );
 };

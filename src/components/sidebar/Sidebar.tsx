@@ -9,20 +9,16 @@ import SidebarWorkspaces from "./workspaces/SidebarWorkspaces";
 
 interface SidebarProps {
   user: User;
-  updateUserData: () => any;
 }
 
-const Sidebar: FC<SidebarProps> = ({ user, updateUserData }: SidebarProps) => {
+const Sidebar: FC<SidebarProps> = ({ user }: SidebarProps) => {
   return (
     <aside className={styles.sidebar}>
       <div className={styles.sidebar__logo}>
         <Logo />
       </div>
       <div className={styles.sidebar__workspaces}>
-        <SidebarWorkspaces
-          groups={user.groups}
-          updateUserData={updateUserData}
-        />
+        <SidebarWorkspaces groups={user.groups} />
       </div>
       <SidebarUserMenu
         trigger={

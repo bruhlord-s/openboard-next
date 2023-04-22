@@ -13,6 +13,15 @@
   background-color: var(--extra-light-gray);
 }
 
+.menuItem__icon {
+  display: flex;
+  align-items: center;
+}
+
+.menuItem__title {
+  color: #000;
+}
+
 /* TODO: make proper modificators */
 .menuItem__title,
 .menuItem__title_warning {
