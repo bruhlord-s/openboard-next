@@ -35,17 +35,22 @@ const SidebarGroupTitle: FC<SidebarGroupTitleProps> = ({
           height={6}
         />
       </div>
-      <SidebarGroupMenu
-        trigger={
-          <div className={styles.sidebarGroupTitle__menuBtn}>
-            <Image src={"icons/menu.svg"} alt="menu" width={16} height={4} />
-          </div>
-        }
-        position="right center"
-        group={group}
-        setIsEditModalOpen={setIsEditModalOpen}
-        setIsDeleteModalOpen={setIsDeleteModalOpen}
-      />
+      <div className={styles.sidebarGroupTitle__btns}>
+        <div className={styles.sidebarGroupTitle__createBtn}>
+          <Image src={"icons/create.svg"} alt="create" width={12} height={12} />
+        </div>
+        <SidebarGroupMenu
+          trigger={
+            <div className={styles.sidebarGroupTitle__menuBtn}>
+              <Image src={"icons/menu.svg"} alt="menu" width={16} height={4} />
+            </div>
+          }
+          position="right center"
+          group={group}
+          setIsEditModalOpen={setIsEditModalOpen}
+          setIsDeleteModalOpen={setIsDeleteModalOpen}
+        />
+      </div>
     </div>
   );
 };

@@ -24,7 +24,14 @@
   transform: rotate(90deg);
 }
 
-.sidebarGroupTitle__menuBtn {
+.sidebarGroupTitle__btns {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sidebarGroupTitle__menuBtn,
+.sidebarGroupTitle__createBtn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -35,9 +42,10 @@
   height: 32px;
 
   cursor: pointer;
-  transition: .1s;
+  transition: 0.1s;
 }
 
-.sidebarGroupTitle__menuBtn:hover {
+.sidebarGroupTitle__menuBtn:hover,
+.sidebarGroupTitle__createBtn:hover {
   background-color: var(--extra-light-gray);
 }

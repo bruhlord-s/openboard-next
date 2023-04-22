@@ -25,12 +25,18 @@ const SidebarGroup: FC<SidebarGroupProps> = ({ group }: SidebarGroupProps) => {
         setIsEditModalOpen={setIsEditModalOpen}
         setIsDeleteModalOpen={setIsDeleteModalOpen}
       />
-      {isOpen && (
-        <div className={styles.sidebarGroup__workspaces}>
-          <SidebarWorkspace name="openboard" />
-          <SidebarWorkspace name="another project" />
-        </div>
-      )}
+      {isOpen &&
+        group.workspaces.map((workspace) => (
+          <SidebarWorkspace name={workspace.name} />
+        ))}
+      {
+        // if group has no workspaces
+        isOpen && group.workspaces.length < 1 && (
+          <p className={styles.sidebarGroup__noWorkspaces}>
+            No workspaces for this group =/
+          </p>
+        )
+      }
 
       <EditGroupPopup
         open={isEditModalOpen}
