@@ -1,0 +1,8 @@
+.deletePopup__message {
+  margin-bottom: 24px;
+}
+
+.deletePopup__options {
+  display: flex;
+  gap: 20px;
+}

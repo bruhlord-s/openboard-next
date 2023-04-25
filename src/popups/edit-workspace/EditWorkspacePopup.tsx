@@ -1,7 +1,6 @@
 import useAxios from "@/hooks/useAxios";
 import React, { FC, useContext, useState } from "react";
 import BasePopup from "../BasePopup";
-import EditGroupValues from "../types/EditGroupValues";
 import PopupProps from "../types/PopupProps";
 import * as Yup from "yup";
 
@@ -12,6 +11,7 @@ import { DataContext } from "@/layouts/dashboard-layout/DashboardLayout";
 
 import styles from "../formPopup.module.css";
 import Workspace from "@/types/Workspace";
+import EditWorkspaceValues from "../types/EditWorkspaceValues";
 
 interface EditWorkspacePopupProps extends PopupProps {
   workspace: Workspace;
@@ -28,7 +28,7 @@ const EditWorkspacePopup: FC<EditWorkspacePopupProps> = ({
   const axios = useAxios();
   const updateData = useContext(DataContext);
 
-  const editGroup = (values: EditGroupValues) => {
+  const editWorkspace = (values: EditWorkspaceValues) => {
     if (isLoading) return;
 
     setError("");
@@ -45,14 +45,14 @@ const EditWorkspacePopup: FC<EditWorkspacePopupProps> = ({
   };
 
   return (
-    <BasePopup open={open} setOpen={setOpen} title="Edit group">
+    <BasePopup open={open} setOpen={setOpen} title="Edit workspace">
       <div className={styles.formPopup}>
         <Formik
           initialValues={{ name: workspace.name }}
           validationSchema={Yup.object({
             name: Yup.string().required("Required").min(3, "Min 3 characters"),
           })}
-          onSubmit={(values: EditGroupValues) => editGroup(values)}
+          onSubmit={(values: EditWorkspaceValues) => editWorkspace(values)}
         >
           <Form>
             <div className={styles.formPopup__form}>

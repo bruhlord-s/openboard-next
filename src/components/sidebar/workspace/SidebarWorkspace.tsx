@@ -5,6 +5,7 @@ import styles from "./sidebarWorkspace.module.css";
 import SidebarWorkspaceMenu from "@/menus/sidebar-workspace/SidebarWorkspaceMenu";
 import EditWorkspacePopup from "@/popups/edit-workspace/EditWorkspacePopup";
 import Workspace from "@/types/Workspace";
+import DeleteWorkspacePopup from "@/popups/delete-workspace/DeleteWorkspacePopup";
 
 interface SidebarWorkspaceProps {
   workspace: Workspace;
@@ -33,6 +34,11 @@ const SidebarWorkspace: FC<SidebarWorkspaceProps> = ({
         workspace={workspace}
         open={isEditModalOpen}
         setOpen={setIsEditModalOpen}
+      />
+      <DeleteWorkspacePopup
+        workspace={workspace}
+        open={isDeleteModalOpen}
+        setOpen={setIsDeleteModalOpen}
       />
     </div>
   );
