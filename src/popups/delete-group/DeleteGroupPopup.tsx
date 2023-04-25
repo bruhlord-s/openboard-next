@@ -24,6 +24,9 @@ const DeleteGroupPopup: FC<DeleteGroupPopupProps> = ({
   const updateData = useContext(DataContext);
 
   const deleteGroup = () => {
+    if (isLoading) return;
+
+    setError("");
     setIsLoading(true);
 
     axios

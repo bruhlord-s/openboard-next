@@ -1,23 +1,41 @@
 import Image from "next/image";
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 
 import styles from "./sidebarWorkspace.module.css";
+import SidebarWorkspaceMenu from "@/menus/sidebar-workspace/SidebarWorkspaceMenu";
+import EditWorkspacePopup from "@/popups/edit-workspace/EditWorkspacePopup";
+import Workspace from "@/types/Workspace";
 
 interface SidebarWorkspaceProps {
-    name: string;
+  workspace: Workspace;
 }
 
 const SidebarWorkspace: FC<SidebarWorkspaceProps> = ({
-    name,
+  workspace,
 }: SidebarWorkspaceProps) => {
-    return (
-        <div className={styles.sidebarWorkspace}>
-            <p className={styles.sidebarWorkspace__title}>{name}</p>
-            <span className={styles.sidebarWorkspace__menuBtn}>
-                <Image src={"icons/menu.svg"} alt={"menu"} width={16} height={4} />
-            </span>
-        </div>
-    );
+  const [isEditModalOpen, setIsEditModalOpen] = useState<boolean>(false);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState<boolean>(false);
+
+  return (
+    <div className={styles.sidebarWorkspace}>
+      <p className={styles.sidebarWorkspace__title}>{workspace.name}</p>
+      <SidebarWorkspaceMenu
+        trigger={
+          <span className={styles.sidebarWorkspace__menuBtn}>
+            <Image src={"icons/menu.svg"} alt={"menu"} width={16} height={4} />
+          </span>
+        }
+        setIsEditModalOpen={setIsEditModalOpen}
+        setIsDeleteModalOpen={setIsDeleteModalOpen}
+      />
+
+      <EditWorkspacePopup
+        workspace={workspace}
+        open={isEditModalOpen}
+        setOpen={setIsEditModalOpen}
+      />
+    </div>
+  );
 };
 
 export default SidebarWorkspace;

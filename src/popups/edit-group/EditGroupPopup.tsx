@@ -67,7 +67,7 @@ const EditGroupPopup: FC<EditGroupPopupProps> = ({
               <div className={styles.formPopup__submit}>
                 <Button
                   title="Edit"
-                  style={{ width: 100 }}
+                  style={{ width: "100%" }}
                   type="submit"
                   disabled={isLoading}
                 />

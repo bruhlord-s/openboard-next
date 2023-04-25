@@ -9,6 +9,7 @@ interface SidebarGroupTitleProps {
   group: Group;
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsCreateModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
   setIsEditModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
   setIsDeleteModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
@@ -17,6 +18,7 @@ const SidebarGroupTitle: FC<SidebarGroupTitleProps> = ({
   group,
   isOpen,
   setIsOpen,
+  setIsCreateModalOpen,
   setIsEditModalOpen,
   setIsDeleteModalOpen,
 }: SidebarGroupTitleProps) => {
@@ -36,7 +38,10 @@ const SidebarGroupTitle: FC<SidebarGroupTitleProps> = ({
         />
       </div>
       <div className={styles.sidebarGroupTitle__btns}>
-        <div className={styles.sidebarGroupTitle__createBtn}>
+        <div
+          className={styles.sidebarGroupTitle__createBtn}
+          onClick={() => setIsCreateModalOpen(true)}
+        >
           <Image src={"icons/create.svg"} alt="create" width={12} height={12} />
         </div>
         <SidebarGroupMenu
