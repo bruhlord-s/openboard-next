@@ -1,3 +1,8 @@
 .dashboard__header {
   margin-bottom: 2em;
 }
+
+.dashboard__boardsLoading {
+  display: flex;
+  gap: 32px;
+}

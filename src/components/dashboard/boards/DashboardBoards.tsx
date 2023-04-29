@@ -2,13 +2,20 @@ import React, { FC } from "react";
 import DashboardBoard from "../board/DashboardBoard";
 
 import styles from "./dashboardBoards.module.css";
+import Board from "@/types/Board";
 
-const DashboardBoards: FC = () => {
+interface DashboardBoardsProps {
+  boards: Board[];
+}
+
+const DashboardBoards: FC<DashboardBoardsProps> = ({
+  boards,
+}: DashboardBoardsProps) => {
   return (
     <div className={styles.dashboardBoards}>
-      <DashboardBoard />
-      <DashboardBoard />
-      <DashboardBoard />
+      {boards?.map((board, i) => (
+        <DashboardBoard board={board} key={i} />
+      ))}
     </div>
   );
 };
