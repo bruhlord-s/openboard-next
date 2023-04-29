@@ -8,6 +8,8 @@
   width: 320px;
 
   background-color: #fff;
+
+  margin-right: 1em;
 }
 
 .dashboardBoard__header {
@@ -17,6 +19,7 @@
   width: 100%;
   gap: 1em;
   border-bottom: 1px solid #000;
+  user-select: none;
 }
 
 .dashboardBoard__title {

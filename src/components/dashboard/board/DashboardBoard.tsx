@@ -23,11 +23,9 @@ const DashboardBoard: FC<DashboardBoardProps> = ({
           {board.tasks.length}
         </span>
       </div>
-      {board.tasks.length > 0 ?? (
-        <div className={styles.dashboardBoard__tasks}>
-          <DashboardTasks tasks={board.tasks} />
-        </div>
-      )}
+      <div className={styles.dashboardBoard__tasks}>
+        <DashboardTasks tasks={board.tasks} />
+      </div>
     </div>
   );
 };
