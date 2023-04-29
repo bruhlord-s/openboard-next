@@ -19,11 +19,15 @@ const DashboardBoard: FC<DashboardBoardProps> = ({
           style={{ backgroundColor: board.color }}
         ></span>
         <h3 className={styles.dashboardBoard__title}>{board.name}</h3>
-        <span className={styles.dashboardBoard__count}>3</span>
+        <span className={styles.dashboardBoard__count}>
+          {board.tasks.length}
+        </span>
       </div>
-      <div className={styles.dashboardBoard__tasks}>
-        <DashboardTasks />
-      </div>
+      {board.tasks.length > 0 ?? (
+        <div className={styles.dashboardBoard__tasks}>
+          <DashboardTasks tasks={board.tasks} />
+        </div>
+      )}
     </div>
   );
 };
