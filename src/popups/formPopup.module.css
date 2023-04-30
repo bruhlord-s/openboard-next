@@ -3,3 +3,26 @@
   flex-direction: column;
   gap: 16px;
 }
+
+.formPopup__row {
+  display: flex;
+  gap: 20px;
+  align-items: flex-end;
+}
+
+.formPopup__colorInput {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 0;
+  margin-bottom: 4px;
+}
+
+.formPopup__colorInput::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.formPopup__colorInput::-webkit-color-swatch {
+  border: 0;
+  border-radius: 50%;
+}

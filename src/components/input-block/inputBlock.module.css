@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.8em;
+  flex: 1;
 }
 
 .inputBlock__info {
