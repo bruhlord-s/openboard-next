@@ -1,0 +1,17 @@
+.form__attachments {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.form__attachmentsHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form__attachmentsBtn {
+  color: var(--accent-color);
+  text-decoration: underline;
+  cursor: pointer;
+  user-select: none;
+}

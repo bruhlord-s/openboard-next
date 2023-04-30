@@ -8,6 +8,8 @@ interface InputBlockProps {
   type: "email" | "text" | "password";
   label: string;
   placeholder?: string;
+  as?: "textarea";
+  rows?: number;
 }
 
 const InputBlock: FC<InputBlockProps> = ({
@@ -15,6 +17,8 @@ const InputBlock: FC<InputBlockProps> = ({
   type,
   label,
   placeholder,
+  as,
+  rows,
 }: InputBlockProps) => {
   return (
     <div className={styles.inputBlock}>
@@ -32,6 +36,8 @@ const InputBlock: FC<InputBlockProps> = ({
         name={name}
         type={type}
         placeholder={placeholder}
+        as={as}
+        rows={rows}
       />
     </div>
   );

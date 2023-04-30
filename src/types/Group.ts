@@ -1,3 +1,4 @@
+import User from "./User";
 import Workspace from "./Workspace";
 
 export default interface Group {
@@ -5,4 +6,5 @@ export default interface Group {
   name: string;
   slug: string;
   workspaces: Workspace[];
+  users: User[];
 }

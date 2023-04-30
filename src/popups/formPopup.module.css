@@ -10,6 +10,12 @@
   align-items: flex-end;
 }
 
+.formPopup__inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
 .formPopup__colorInput {
   width: 32px;
   height: 32px;

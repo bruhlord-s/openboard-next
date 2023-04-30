@@ -4,6 +4,7 @@ import React, { FC, useState } from "react";
 import styles from "./dashboardHeader.module.css";
 import Workspace from "@/types/Workspace";
 import CreateBoardPopup from "@/popups/create-board/CreateBoardPopup";
+import CreateTaskPopup from "@/popups/create-task/CreateTaskPopup";
 
 interface DashboardHeaderProps {
   workspace: Workspace;
@@ -14,18 +15,28 @@ const DashboardHeader: FC<DashboardHeaderProps> = ({
 }: DashboardHeaderProps) => {
   const [isCreateBoardModalOpen, setIsCreateBoardModalOpen] =
     useState<boolean>(false);
+  const [isCreateTaskModalOpen, setIsCreateTaskModalOpen] =
+    useState<boolean>(false);
 
   return (
     <header className={styles.dashboardHeader}>
       <h2 className={styles.dashboardHeader__title}>{workspace.name}</h2>
       <div className={styles.dashboardHeader__actions}>
-        <Button title="New task" />
+        <Button
+          title="New task"
+          onClick={() => setIsCreateTaskModalOpen(true)}
+        />
         <Button
           title="New board"
           onClick={() => setIsCreateBoardModalOpen(true)}
         />
       </div>
 
+      <CreateTaskPopup
+        open={isCreateTaskModalOpen}
+        setOpen={setIsCreateTaskModalOpen}
+        workspace={workspace}
+      />
       <CreateBoardPopup
         open={isCreateBoardModalOpen}
         setOpen={setIsCreateBoardModalOpen}

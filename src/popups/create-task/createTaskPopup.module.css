@@ -1,0 +1,11 @@
+.form__column {
+  display: flex;
+  gap: 32px;
+  min-width: 320px;
+}
+
+.form__select {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8em;
+}

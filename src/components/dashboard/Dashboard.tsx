@@ -22,6 +22,13 @@ const emptyWorkspace = {
   group_id: 0,
   name: "",
   boards: [],
+  group: {
+    id: 0,
+    name: "",
+    slug: "",
+    workspaces: [],
+    users: [],
+  },
 };
 
 const Dashboard: FC = () => {
