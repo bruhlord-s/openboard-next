@@ -25,6 +25,26 @@ interface CreateTaskPopupProps extends PopupProps {
   workspace: Workspace;
 }
 
+const convertTimeToSeconds = (time: string): number => {
+  let seconds = 0;
+
+  let hours = time.match(/(\d+)\s*h/);
+  let minutes = time.match(/(\d+)\s*m/);
+  let secs = time.match(/(\d+)\s*s/);
+
+  if (hours) {
+    seconds += parseInt(hours[1]) * 3600;
+  }
+  if (minutes) {
+    seconds += parseInt(minutes[1]) * 60;
+  }
+  if (secs) {
+    seconds += parseInt(secs[1]);
+  }
+
+  return seconds;
+};
+
 const selectStyles: StylesConfig = {
   control: (styles) => ({
     ...styles,
@@ -51,6 +71,7 @@ const CreateTaskPopup: FC<CreateTaskPopupProps> = ({
     label: "",
     value: 0,
   });
+  const [attachments, setAttachments] = useState<any[]>([]);
 
   const axios = useAxios();
   const updateData = useContext(UpdateWorkspaceContext);
@@ -66,6 +87,7 @@ const CreateTaskPopup: FC<CreateTaskPopupProps> = ({
 
   useEffect(() => {
     setSelectedBoard(boardOptions[0]);
+    setSelectedAssignee(assigneeOptions[0]);
   }, []);
 
   const createTask = (value: CreateTaskValues) => {
@@ -74,16 +96,46 @@ const CreateTaskPopup: FC<CreateTaskPopupProps> = ({
     setError("");
     setIsLoading(true);
 
-    axios.post("task", value);
+    let formData = new FormData();
+    formData.append("name", value.name);
+    formData.append("user_id", selectedAssignee?.value.toString() || "");
+    formData.append("board_id", selectedBoard?.value.toString() || "");
+    formData.append("description", value.description || "");
+    formData.append(
+      "time_estimated",
+      value.time_estimated
+        ? convertTimeToSeconds(value.time_estimated).toString()
+        : "0"
+    );
+    attachments.forEach((attachment) => {
+      formData.append("attachments[]", attachment);
+    });
+
+    axios
+      .post("task", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then(() => {
+        setOpen(false);
+        updateData();
+      })
+      .catch((err) => setError(err?.response?.data?.message))
+      .finally(() => setIsLoading(false));
   };
 
   return (
     <BasePopup open={open} setOpen={setOpen} title="Create new task">
       <div className={styles.formPopup}>
         <Formik
-          initialValues={{ name: "" }}
+          initialValues={{ name: "", time_estimated: "", description: "" }}
           validationSchema={Yup.object({
             name: Yup.string().required("Required").min(3, "Min 3 characters"),
+            time_estimated: Yup.string().matches(
+              /^(?:\d+h)?(?:(?!\n)\s)?(?:\d+m)?(?:(?!\n)\s)?(?:\d+s)?$/,
+              "Incorrect format"
+            ),
           })}
           onSubmit={(values: CreateTaskValues) => createTask({ ...values })}
         >
@@ -122,7 +174,7 @@ const CreateTaskPopup: FC<CreateTaskPopupProps> = ({
                     label="Time Estimated"
                     name="time_estimated"
                     type="text"
-                    placeholder="1h 30m"
+                    placeholder="1h 30m 59s"
                   />
                 </div>
                 <div
@@ -137,7 +189,10 @@ const CreateTaskPopup: FC<CreateTaskPopupProps> = ({
                     as="textarea"
                     rows={6}
                   />
-                  <TaskAttachments />
+                  <TaskAttachments
+                    attachments={attachments}
+                    setAttachments={setAttachments}
+                  />
                 </div>
               </div>
 

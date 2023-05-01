@@ -3,9 +3,15 @@ import React, { FC, useEffect, useState } from "react";
 import styles from "./taskAttachments.module.css";
 import Image from "next/image";
 
-const TaskAttachments: FC = () => {
-  const [attachments, setAttachments] = useState<any[]>([]);
+interface TaskAttachmentsProps {
+  attachments: any[];
+  setAttachments: React.Dispatch<React.SetStateAction<any[]>>;
+}
 
+const TaskAttachments: FC<TaskAttachmentsProps> = ({
+  attachments,
+  setAttachments,
+}: TaskAttachmentsProps) => {
   const fileInputRef = React.useRef<HTMLInputElement>(null);
 
   const handleInput = (e: React.FormEvent<HTMLInputElement>) => {

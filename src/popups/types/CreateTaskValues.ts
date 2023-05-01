@@ -3,5 +3,5 @@ export default interface CreateTaskValues {
   board_id?: number;
   assignee_id?: number;
   description?: string;
-  time_estimated?: number;
+  time_estimated?: string;
 }
