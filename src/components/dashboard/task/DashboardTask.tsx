@@ -16,8 +16,8 @@ const DashboardTask: FC<DashboardTaskProps> = ({
     <div className={styles.dashboardTask}>
       <p className={styles.dashboardTask__title}>{task.name}</p>
       <div className={styles.dashboardTask__info}>
-        <Assignee />
-        <TimeEstimated />
+        <Assignee user={task.user} />
+        <TimeEstimated time={task.time_estimated} />
       </div>
     </div>
   );
