@@ -1,17 +1,67 @@
-.form__attachments {
+.attachments {
   display: flex;
   flex-direction: column;
   flex: 1;
+  flex: 1;
 }
 
-.form__attachmentsHeader {
+.attachments__header {
   display: flex;
   justify-content: space-between;
 }
 
-.form__attachmentsBtn {
+.attachments__btn {
   color: var(--accent-color);
   text-decoration: underline;
   cursor: pointer;
   user-select: none;
+}
+
+.attachments__inner {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+}
+
+.attachments__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  height: 130px;
+  border-radius: 8px;
+  background-color: var(--extra-light-gray);
+  width: 100%;
+}
+
+.attachments__attachment {
+  position: relative;
+}
+
+.attachments__images {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+}
+
+.attachments__img {
+  height: 120px;
+  border-radius: 6px;
+}
+
+.attachments__remove {
+  background-color: rgba(0, 0, 0, 0.25);
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  z-index: 2;
 }
