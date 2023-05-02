@@ -64,6 +64,11 @@ const AuthSignIn: FC = () => {
             </div>
             <div className={styles.authSignIn__submit}>
               <Button title="Sign In" style={{ width: 100 }} type="submit" />
+
+              <span className={styles.authSignIn__link}>
+                <p>Dont have an account?</p>
+                <a href="/register">Sign Up</a>
+              </span>
             </div>
           </div>
         </Form>

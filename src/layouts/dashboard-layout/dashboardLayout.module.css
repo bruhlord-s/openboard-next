@@ -1,8 +1,7 @@
 .dashboardLayout {
   height: 100vh;
 
-  display: grid;
-  grid-template-columns: 3fr 21fr;
+  display: flex;
 }
 
 .dashboardLayout__contentWrapper {
@@ -11,6 +10,8 @@
     rgba(62, 123, 216, 0.15) 0%,
     rgba(255, 255, 255, 0) 100%
   );
+  flex: 1;
+  overflow-x: hidden;
 }
 
 .dashboardLayout__content {

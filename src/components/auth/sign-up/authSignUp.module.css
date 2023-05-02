@@ -23,5 +23,18 @@
 
 .authSignUp__submit {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  gap: 24px;
+}
+
+.authSignUp__link {
+  display: flex;
+  gap: 8px;
+}
+
+.authSignUp__link a {
+  color: var(--accent-color);
+  text-decoration: underline;
 }

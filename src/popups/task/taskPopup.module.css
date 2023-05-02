@@ -1,0 +1,55 @@
+.popup__body {
+  display: flex;
+  gap: 32px;
+}
+
+.popup__column {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.popup__block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.popup__blockName {
+  color: var(--light-gray);
+}
+
+.popup__blockValueRow {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.popup__blockValueDescription {
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.popup__boardColor {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+}
+
+.popup__attachmentsRow {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  margin-top: 12px;
+  padding-bottom: 10px;
+}
+
+.popup__attachment {
+  height: 125px;
+  border-radius: 6px;
+}
+
+.popup__time {
+  display: flex;
+  gap: 40px;
+}

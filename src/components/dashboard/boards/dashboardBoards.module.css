@@ -1,3 +1,5 @@
 .dashboardBoards {
   display: flex;
+  overflow-x: auto;
+  flex: 1;
 }

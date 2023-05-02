@@ -1,5 +1,17 @@
+.dashboard {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
 .dashboard__header {
   margin-bottom: 2em;
+}
+
+.dashboard__boards {
+  display: flex;
+  flex: 1;
 }
 
 .dashboard__boardsLoading {

@@ -5,6 +5,7 @@ import User from "@/types/User";
 
 import styles from "./dashboardLayout.module.css";
 import SidebarSkeleton from "@/components/sidebar/skeleton/SidebarSkeleton";
+import Router from "next/router";
 
 export const DataContext = createContext<CallableFunction>(() => {});
 
@@ -31,7 +32,12 @@ const DashboardLayout: FC<DashboardLayoutProps> = ({
   const axios = useAxios();
 
   const fetchUserData = () => {
-    axios.get("/user").then((res) => setUser(res.data.data));
+    axios
+      .get("/user")
+      .then((res) => setUser(res.data.data))
+      .catch((err) => {
+        Router.push("/login");
+      });
   };
 
   useEffect(() => {

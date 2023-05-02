@@ -2,7 +2,7 @@ import axios from "axios";
 
 const useAxios = () => {
   const instance = axios.create({
-    baseURL: process.env.NEXT_PUBLIC_API_URL,
+    baseURL: process.env.NEXT_PUBLIC_API_URL + "/api",
   });
 
   if (typeof window !== "undefined") {

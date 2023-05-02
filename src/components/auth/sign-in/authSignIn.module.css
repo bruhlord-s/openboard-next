@@ -19,5 +19,18 @@
 
 .authSignIn__submit {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  gap: 24px;
+}
+
+.authSignIn__link {
+  display: flex;
+  gap: 8px;
+}
+
+.authSignIn__link a {
+  color: var(--accent-color);
+  text-decoration: underline;
 }
