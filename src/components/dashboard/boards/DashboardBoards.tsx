@@ -1,10 +1,16 @@
-import React, { FC, useState } from "react";
+import React, { FC, useContext, useState } from "react";
 import DashboardBoard from "../board/DashboardBoard";
 
 import styles from "./dashboardBoards.module.css";
 import Board from "@/types/Board";
-import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
+import { DragDropContext } from "react-beautiful-dnd";
 import useAxios from "@/hooks/useAxios";
+import { WorkspaceContext } from "@/pages";
+import {
+  SetWorkspaceContext,
+  UpdateWorkspaceContext,
+  WorkspaceDataContext,
+} from "../Dashboard";
 
 const reorder = (list: Array<any>, startIndex: number, endIndex: number) => {
   console.log(startIndex, endIndex);
@@ -24,47 +30,72 @@ const DashboardBoards: FC<DashboardBoardsProps> = ({
   const [boardsState, setBoardsState] = useState<Board[]>(boards);
 
   const axios = useAxios();
+  const workspaceId = useContext(WorkspaceContext)?.currentWorkspaceId;
+  const workspace = useContext(WorkspaceDataContext);
+  const setWorkspace = useContext(SetWorkspaceContext);
 
   const onDragEnd = (result: any) => {
-    if (!result.destination) {
+    console.log(result);
+
+    if (!result.destination) return;
+
+    const sourceBoardId = result.source.droppableId.split("_")[1];
+    const taskId = result.draggableId.split("_")[1];
+    const boardId = result.destination.droppableId.split("_")[1];
+
+    let newWorkspace = { ...workspace };
+
+    const task = newWorkspace.boards
+      .find((board) => board.id == sourceBoardId)
+      ?.tasks.find((task) => task.id == taskId)!;
+
+    task.board = newWorkspace.boards.find((board) => board.id == boardId)!;
+
+    if (result.source.droppableId === result.destination.droppableId) {
+      newWorkspace.boards
+        .find((board) => board.id == boardId)
+        ?.tasks.splice(result.source.index, 1);
+
+      newWorkspace.boards
+        .find((board) => board.id == boardId)
+        ?.tasks.splice(result.destination.index, 0, task);
+
+      setWorkspace(newWorkspace);
+
       return;
     }
 
-    const boardsRepositioned = reorder(
-      boards,
-      result.source.index,
-      result.destination.index
-    );
+    const newSourceBoard = newWorkspace.boards
+      .find((board) => {
+        return board.id == sourceBoardId;
+      })
+      ?.tasks.filter((task) => task.id != taskId)!;
 
-    setBoardsState(boardsRepositioned);
+    newWorkspace.boards
+      .find((board) => board.id == boardId)
+      ?.tasks.splice(result.destination?.index, 0, task)!;
+
+    newWorkspace.boards.find((board) => board.id == sourceBoardId)!.tasks =
+      newSourceBoard;
+
+    setWorkspace(newWorkspace);
+
+    axios.put(`/task/${taskId}`, { board_id: boardId }).then(() => {
+      axios.get(`/workspace/${workspaceId}`).then((res) => {
+        // setWorkspace(res.data.data);
+      });
+    });
   };
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
-      <Droppable droppableId="boardsDroppable" direction="horizontal">
-        {(provided, snapshot) => (
-          <div
-            className={styles.dashboardBoards}
-            ref={provided.innerRef}
-            {...provided.droppableProps}
-          >
-            {boardsState?.map((board, i) => (
-              <Draggable key={i} draggableId={`board_${i}`} index={i}>
-                {(provided, snapshot) => (
-                  <div
-                    ref={provided.innerRef}
-                    {...provided.draggableProps}
-                    {...provided.dragHandleProps}
-                  >
-                    <DashboardBoard board={board} key={i} />
-                  </div>
-                )}
-              </Draggable>
-            ))}
-            {provided.placeholder}
+      <div className={styles.dashboardBoards}>
+        {boardsState?.map((board, i) => (
+          <div key={i}>
+            <DashboardBoard board={board} />
           </div>
-        )}
-      </Droppable>
+        ))}
+      </div>
     </DragDropContext>
   );
 };

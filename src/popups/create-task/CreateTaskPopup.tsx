@@ -76,8 +76,6 @@ const CreateTaskPopup: FC<CreateTaskPopupProps> = ({
   const axios = useAxios();
   const updateData = useContext(UpdateWorkspaceContext);
 
-  console.log(workspace.group);
-
   const boardOptions = workspace?.boards.map((board) => {
     return { label: board.name, value: board.id };
   });

@@ -48,7 +48,7 @@ const DashboardBoard: FC<DashboardBoardProps> = ({
         </span>
       </div>
       <div className={styles.dashboardBoard__tasks}>
-        <DashboardTasks tasks={board.tasks} />
+        <DashboardTasks board={board} tasks={board.tasks} />
       </div>
 
       <EditBoardPopup
