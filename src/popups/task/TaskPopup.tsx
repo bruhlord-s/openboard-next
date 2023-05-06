@@ -1,25 +1,26 @@
-import { UpdateWorkspaceContext } from "@/components/dashboard/Dashboard";
-import useAxios from "@/hooks/useAxios";
-import { FC, useContext, useEffect, useState } from "react";
-import CreateTaskValues from "../types/CreateTaskValues";
+import React, { FC, useState } from "react";
 import BasePopup from "../BasePopup";
 import PopupProps from "../types/PopupProps";
-import * as Yup from "yup";
 
 import styles from "../formPopup.module.css";
 import styles2 from "./taskPopup.module.css";
 
 import Task from "@/types/Task";
 import Avatar from "@/components/avatar/Avatar";
+import TaskToolbar from "@/components/task-toolbar/TaskToolbar";
 
 interface TaskPopupProps extends PopupProps {
   task: Task;
+  setIsEditModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsDeleteModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const TaskPopup: FC<TaskPopupProps> = ({
   open,
   setOpen,
   task,
+  setIsEditModalOpen,
+  setIsDeleteModalOpen,
 }: TaskPopupProps) => {
   const convertSecondsToTime = (seconds: number): string => {
     let hours = Math.floor(seconds / (60 * 60));
@@ -31,7 +32,19 @@ const TaskPopup: FC<TaskPopupProps> = ({
   };
 
   return (
-    <BasePopup open={open} setOpen={setOpen} title="Task">
+    <BasePopup
+      open={open}
+      setOpen={setOpen}
+      title="Task"
+      toolbar={
+        <TaskToolbar
+          task={task}
+          setIsParentModalOpen={setOpen}
+          setIsEditModalOpen={setIsEditModalOpen}
+          setIsDeleteModalOpen={setIsDeleteModalOpen}
+        />
+      }
+    >
       <div className={styles.formPopup}>
         <div className={styles.formPopup__form}>
           <div className={styles2.popup__body}>
@@ -78,7 +91,10 @@ const TaskPopup: FC<TaskPopupProps> = ({
                 </div>
               </div>
             </div>
-            <div className={styles2.popup__column} style={{ width: 400 }}>
+            <div
+              className={styles2.popup__column}
+              style={{ width: 400, justifyContent: "space-between" }}
+            >
               <div className={styles2.popup__block}>
                 <p className={styles2.popup__blockName}>Description</p>
                 <p className={styles2.popup__blockValueDescription}>

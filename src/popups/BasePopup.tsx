@@ -6,6 +6,7 @@ import styles from "./basePopup.module.css";
 
 interface BasePopupProps extends PopupProps {
   children: JSX.Element;
+  toolbar?: JSX.Element;
   title: string;
 }
 
@@ -14,6 +15,7 @@ const BasePopup: FC<BasePopupProps> = ({
   open,
   setOpen,
   title,
+  toolbar,
 }: BasePopupProps) => {
   const closePopup = () => {
     setOpen(false);
@@ -22,9 +24,19 @@ const BasePopup: FC<BasePopupProps> = ({
   return (
     <Popup className={"popup"} open={open} onClose={closePopup}>
       <div className={styles.popup}>
-        <div className={styles.popup__header}>
-          <h2 className={styles.popup__title}>{title}</h2>
-        </div>
+        {toolbar ? (
+          <div
+            className={styles.popup__header}
+            style={{ justifyContent: "space-between" }}
+          >
+            <h2 className={styles.popup__title}>{title}</h2>
+            {toolbar}
+          </div>
+        ) : (
+          <div className={styles.popup__header}>
+            <h2 className={styles.popup__title}>{title}</h2>
+          </div>
+        )}
         <div className={styles.popup__body}>{children}</div>
       </div>
     </Popup>

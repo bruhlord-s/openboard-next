@@ -1,0 +1,22 @@
+.taskToolbar {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.taskToolbar__option {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.taskToolbar__option:hover {
+  background-color: var(--extra-light-gray);
+}

@@ -5,3 +5,7 @@
 
   min-width: 400px;
 }
+
+.popup__header {
+  display: flex;
+}

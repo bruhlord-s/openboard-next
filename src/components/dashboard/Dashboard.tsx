@@ -31,6 +31,8 @@ const emptyWorkspace = {
   },
 };
 
+export const WorkspaceDataContext = createContext<Workspace>(emptyWorkspace);
+
 const Dashboard: FC = () => {
   const [workspace, setWorkspace] = useState<Workspace>(emptyWorkspace);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -53,28 +55,30 @@ const Dashboard: FC = () => {
   }, [workspaceId]);
 
   return workspaceId !== null ? (
-    <UpdateWorkspaceContext.Provider value={fetchWorkspace}>
-      <div className={styles.dashboard}>
-        <div className={styles.dashboard__header}>
-          {isLoading ? (
-            <SkeletonRectangle style={{ width: 275, height: 28 }} />
-          ) : (
-            <DashboardHeader workspace={workspace} />
-          )}
+    <WorkspaceDataContext.Provider value={workspace}>
+      <UpdateWorkspaceContext.Provider value={fetchWorkspace}>
+        <div className={styles.dashboard}>
+          <div className={styles.dashboard__header}>
+            {isLoading ? (
+              <SkeletonRectangle style={{ width: 275, height: 28 }} />
+            ) : (
+              <DashboardHeader workspace={workspace} />
+            )}
+          </div>
+          <div className={styles.dashboard__boards}>
+            {isLoading ? (
+              <div className={styles.dashboard__boardsLoading}>
+                <SkeletonRectangle style={{ width: 300, height: 350 }} />
+                <SkeletonRectangle style={{ width: 300, height: 450 }} />
+                <SkeletonRectangle style={{ width: 300, height: 400 }} />
+              </div>
+            ) : (
+              <DashboardBoards boards={workspace.boards} />
+            )}
+          </div>
         </div>
-        <div className={styles.dashboard__boards}>
-          {isLoading ? (
-            <div className={styles.dashboard__boardsLoading}>
-              <SkeletonRectangle style={{ width: 300, height: 350 }} />
-              <SkeletonRectangle style={{ width: 300, height: 450 }} />
-              <SkeletonRectangle style={{ width: 300, height: 400 }} />
-            </div>
-          ) : (
-            <DashboardBoards boards={workspace.boards} />
-          )}
-        </div>
-      </div>
-    </UpdateWorkspaceContext.Provider>
+      </UpdateWorkspaceContext.Provider>
+    </WorkspaceDataContext.Provider>
   ) : (
     <DashboardEmpty />
   );
