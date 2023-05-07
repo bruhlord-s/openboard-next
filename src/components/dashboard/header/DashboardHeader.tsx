@@ -23,12 +23,14 @@ const DashboardHeader: FC<DashboardHeaderProps> = ({
       <h2 className={styles.dashboardHeader__title}>{workspace.name}</h2>
       <div className={styles.dashboardHeader__actions}>
         <Button
-          title="New task"
+          title="Создать задачу"
           onClick={() => setIsCreateTaskModalOpen(true)}
+          style={{ width: 160 }}
         />
         <Button
-          title="New board"
+          title="Создать доску"
           onClick={() => setIsCreateBoardModalOpen(true)}
+          style={{ width: 160 }}
         />
       </div>
 

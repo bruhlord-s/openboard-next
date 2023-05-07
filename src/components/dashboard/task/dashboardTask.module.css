@@ -29,3 +29,9 @@
   display: flex;
   justify-content: space-between;
 }
+
+.dashboardTask__number {
+  color: var(--light-gray);
+  margin-right: 8px;
+  font-weight: 500;
+}

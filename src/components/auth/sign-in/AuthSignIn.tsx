@@ -39,10 +39,10 @@ const AuthSignIn: FC = () => {
       <Formik
         initialValues={{ email: "", password: "" }}
         validationSchema={Yup.object({
-          email: Yup.string().email("Invalid").required("Required"),
+          email: Yup.string().email("Невалидно").required("Обязательно"),
           password: Yup.string()
-            .min(8, "Min 8 characters")
-            .required("Required"),
+            .min(8, "Минимум 8 символов")
+            .required("Обязательно"),
         })}
         onSubmit={(values) => handleSubmit(values)}
       >
@@ -56,18 +56,18 @@ const AuthSignIn: FC = () => {
                 placeholder="johndoe@gmail.com"
               />
               <InputBlock
-                label="Password"
+                label="Пароль"
                 name="password"
                 type="password"
                 placeholder="●●●●●●●●"
               />
             </div>
             <div className={styles.authSignIn__submit}>
-              <Button title="Sign In" style={{ width: 100 }} type="submit" />
+              <Button title="Войти" style={{ width: 100 }} type="submit" />
 
               <span className={styles.authSignIn__link}>
-                <p>Dont have an account?</p>
-                <a href="/register">Sign Up</a>
+                <p>Еще нет аккаунта?</p>
+                <a href="/register">Создайте</a>
               </span>
             </div>
           </div>

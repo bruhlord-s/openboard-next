@@ -124,15 +124,17 @@ const CreateTaskPopup: FC<CreateTaskPopupProps> = ({
   };
 
   return (
-    <BasePopup open={open} setOpen={setOpen} title="Create new task">
+    <BasePopup open={open} setOpen={setOpen} title="Создать задачу">
       <div className={styles.formPopup}>
         <Formik
           initialValues={{ name: "", time_estimated: "", description: "" }}
           validationSchema={Yup.object({
-            name: Yup.string().required("Required").min(3, "Min 3 characters"),
+            name: Yup.string()
+              .required("Обязательно")
+              .min(3, "Минимум 3 символа"),
             time_estimated: Yup.string().matches(
               /^(?:\d+h)?(?:(?!\n)\s)?(?:\d+m)?(?:(?!\n)\s)?(?:\d+s)?$/,
-              "Incorrect format"
+              "Неверный формат"
             ),
           })}
           onSubmit={(values: CreateTaskValues) => createTask({ ...values })}
@@ -145,13 +147,13 @@ const CreateTaskPopup: FC<CreateTaskPopupProps> = ({
                   style={{ width: 400 }}
                 >
                   <InputBlock
-                    label="Name"
+                    label="Название"
                     name="name"
                     type="text"
-                    placeholder="Make some noise"
+                    placeholder="Перекрасить кнопку"
                   />
                   <div className={styles2.form__select}>
-                    <p className={styles2.form__selectLabel}>Board</p>
+                    <p className={styles2.form__selectLabel}>Доска</p>
                     <Select
                       options={boardOptions}
                       defaultValue={boardOptions[0]}
@@ -160,7 +162,7 @@ const CreateTaskPopup: FC<CreateTaskPopupProps> = ({
                     />
                   </div>
                   <div className={styles2.form__select}>
-                    <p className={styles2.form__selectLabel}>Assignee</p>
+                    <p className={styles2.form__selectLabel}>Ответственный</p>
                     <Select
                       options={assigneeOptions}
                       defaultValue={assigneeOptions[0]}
@@ -169,7 +171,7 @@ const CreateTaskPopup: FC<CreateTaskPopupProps> = ({
                     />
                   </div>
                   <InputBlock
-                    label="Time Estimated"
+                    label="Предпологаемое время"
                     name="time_estimated"
                     type="text"
                     placeholder="1h 30m 59s"
@@ -180,10 +182,10 @@ const CreateTaskPopup: FC<CreateTaskPopupProps> = ({
                   style={{ width: 500 }}
                 >
                   <InputBlock
-                    label="Description"
+                    label="Описание"
                     name="description"
                     type="text"
-                    placeholder="Task description..."
+                    placeholder="Перекрасить кнопку из салатового в зеленый"
                     as="textarea"
                     rows={6}
                   />
@@ -196,7 +198,7 @@ const CreateTaskPopup: FC<CreateTaskPopupProps> = ({
 
               <div className={styles.formPopup__submit}>
                 <Button
-                  title="Create"
+                  title="Создать"
                   style={{ width: "100%" }}
                   type="submit"
                   disabled={isLoading}

@@ -6,7 +6,7 @@ import React, { FC } from "react";
 const RegisterPage: FC = () => {
   return (
     <AuthLayout>
-      <AuthCard title="Sign Up">
+      <AuthCard title="Регистрация">
         <AuthSignUp />
       </AuthCard>
     </AuthLayout>

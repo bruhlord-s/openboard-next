@@ -50,14 +50,14 @@ const AuthSignUp: FC = () => {
           password_confirmation: "",
         }}
         validationSchema={Yup.object({
-          email: Yup.string().email("Invalid").required("Required"),
-          name: Yup.string().required("Required"),
+          email: Yup.string().email("Невалидно").required("Обязательно"),
+          name: Yup.string().required("Обязательно"),
           password: Yup.string()
-            .min(8, "Min 8 characters")
-            .required("Required"),
+            .min(8, "Минимум 8 символов")
+            .required("Обязательно"),
           password_confirmation: Yup.string().oneOf(
             [Yup.ref("password"), null],
-            "Doesn't match"
+            "Не совпадает"
           ),
         })}
         onSubmit={(values: SignUpValues) => handleSubmit(values)}
@@ -72,19 +72,19 @@ const AuthSignUp: FC = () => {
                 placeholder="johndoe@gmail.com"
               />
               <InputBlock
-                label="Name"
+                label="Имя"
                 name="name"
                 type="text"
-                placeholder="John Doe"
+                placeholder="Джон Доу"
               />
               <InputBlock
-                label="Password"
+                label="Пароль"
                 name="password"
                 type="password"
                 placeholder="●●●●●●●●"
               />
               <InputBlock
-                label="Confirm Password"
+                label="Подтверждение пароля"
                 name="password_confirmation"
                 type="password"
                 placeholder="●●●●●●●●"
@@ -92,15 +92,15 @@ const AuthSignUp: FC = () => {
             </div>
             <div className={styles.authSignUp__submit}>
               <Button
-                title="Sign Up"
-                style={{ width: 100 }}
+                title="Создать аккаунт"
+                style={{ width: 175 }}
                 type="submit"
                 disabled={isLoading}
               />
 
               <span className={styles.authSignUp__link}>
-                <p>Already have an account?</p>
-                <a href="/login">Sign In</a>
+                <p>Уже есть аккаунт?</p>
+                <a href="/login">Войдите</a>
               </span>
             </div>
           </div>

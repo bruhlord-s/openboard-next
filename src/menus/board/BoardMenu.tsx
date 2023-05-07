@@ -44,12 +44,12 @@ const BoardMenu: FC<BoardMenuProps> = ({
       <div className={styles.menu__items}>
         <MenuItem
           iconSrc="/icons/edit.svg"
-          title="Edit"
+          title="Изменить"
           onClick={() => openModalWithPreclick(setIsEditModalOpen)}
         />
         <MenuItem
           iconSrc="/icons/trash.svg"
-          title="Delete"
+          title="Удалить"
           onClick={() => openModalWithPreclick(setIsDeleteModalOpen)}
           warning={true}
         />

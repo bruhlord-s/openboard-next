@@ -7,6 +7,7 @@ import Button from "@/components/button/Button";
 import useAxios from "@/hooks/useAxios";
 import { DataContext } from "@/layouts/dashboard-layout/DashboardLayout";
 import Workspace from "@/types/Workspace";
+import { WorkspaceContext } from "@/pages";
 
 export interface DeleteWorkspacePopupProps extends PopupProps {
   workspace: Workspace;
@@ -22,6 +23,7 @@ const DeleteWorkspacePopup: FC<DeleteWorkspacePopupProps> = ({
 
   const axios = useAxios();
   const updateData = useContext(DataContext);
+  const setWorkspaceId = useContext(WorkspaceContext)!.setCurrentWorkspaceId;
 
   const deleteWorkspace = () => {
     if (isLoading) return;
@@ -34,27 +36,28 @@ const DeleteWorkspacePopup: FC<DeleteWorkspacePopupProps> = ({
       .then(() => {
         setOpen(false);
         updateData();
+        setWorkspaceId(null);
       })
       .catch((err) => setError(err?.response?.data?.message))
       .finally(() => setIsLoading(false));
   };
 
   return (
-    <BasePopup open={open} setOpen={setOpen} title="Delete workspace?">
+    <BasePopup open={open} setOpen={setOpen} title="Удалить проект?">
       <div className={styles.deletePopup}>
         <p className={styles.deletePopup__message}>
-          Are you sure you want to delete workspace {workspace.name}?
+          Вы уверены что хотите удалить {workspace.name}?
         </p>
         <div className={styles.deletePopup__options}>
           <Button
-            title="Delete"
+            title="Удалить"
             style={{ width: 100 }}
             type="submit"
             disabled={isLoading}
             onClick={() => deleteWorkspace()}
           />
           <Button
-            title="Cancel"
+            title="Отмена"
             style={{
               width: 100,
               backgroundColor: "#fff",

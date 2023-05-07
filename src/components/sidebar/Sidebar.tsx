@@ -26,7 +26,7 @@ const Sidebar: FC<SidebarProps> = ({ user }: SidebarProps) => {
             <SidebarUser email={user.email} name={user.name} />
           </div>
         }
-        position="right top"
+        position="right bottom"
       />
     </aside>
   );

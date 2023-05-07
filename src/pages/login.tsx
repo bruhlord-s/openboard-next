@@ -7,7 +7,7 @@ import React from "react";
 const LoginPage: NextPage = () => {
   return (
     <AuthLayout>
-      <AuthCard title="Sign In">
+      <AuthCard title="Вход">
         <AuthSignIn />
       </AuthCard>
     </AuthLayout>

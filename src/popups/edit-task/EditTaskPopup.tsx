@@ -143,7 +143,7 @@ const EditTaskPopup: FC<EditTaskPopupProps> = ({
   };
 
   return (
-    <BasePopup open={open} setOpen={setOpen} title="Create new task">
+    <BasePopup open={open} setOpen={setOpen} title="Редактировать задачу">
       <div className={styles.formPopup}>
         <Formik
           initialValues={{
@@ -152,10 +152,12 @@ const EditTaskPopup: FC<EditTaskPopupProps> = ({
             description: task.description,
           }}
           validationSchema={Yup.object({
-            name: Yup.string().required("Required").min(3, "Min 3 characters"),
+            name: Yup.string()
+              .required("Обязательно")
+              .min(3, "Минимум 3 символа"),
             time_estimated: Yup.string().matches(
               /^(?:\d+h)?(?:(?!\n)\s)?(?:\d+m)?(?:(?!\n)\s)?(?:\d+s)?$/,
-              "Incorrect format"
+              "Неверный формат"
             ),
           })}
           onSubmit={(values: EditTaskValues) => editTask({ ...values })}
@@ -168,13 +170,13 @@ const EditTaskPopup: FC<EditTaskPopupProps> = ({
                   style={{ width: 400 }}
                 >
                   <InputBlock
-                    label="Name"
+                    label="Название"
                     name="name"
                     type="text"
-                    placeholder="Make some noise"
+                    placeholder="Перекрасить кнопку"
                   />
                   <div className={styles2.form__select}>
-                    <p className={styles2.form__selectLabel}>Board</p>
+                    <p className={styles2.form__selectLabel}>Доска</p>
                     <Select
                       options={boardOptions}
                       defaultValue={
@@ -188,7 +190,7 @@ const EditTaskPopup: FC<EditTaskPopupProps> = ({
                     />
                   </div>
                   <div className={styles2.form__select}>
-                    <p className={styles2.form__selectLabel}>Assignee</p>
+                    <p className={styles2.form__selectLabel}>Ответственный</p>
                     <Select
                       options={assigneeOptions}
                       defaultValue={
@@ -202,7 +204,7 @@ const EditTaskPopup: FC<EditTaskPopupProps> = ({
                     />
                   </div>
                   <InputBlock
-                    label="Time Estimated"
+                    label="Предпологаемое время"
                     name="time_estimated"
                     type="text"
                     placeholder="1h 30m 59s"
@@ -213,10 +215,10 @@ const EditTaskPopup: FC<EditTaskPopupProps> = ({
                   style={{ width: 500 }}
                 >
                   <InputBlock
-                    label="Description"
+                    label="Описание"
                     name="description"
                     type="text"
-                    placeholder="Task description..."
+                    placeholder="Перекрасить кнопку из салатового в зеленый"
                     as="textarea"
                     rows={16}
                   />
@@ -225,7 +227,7 @@ const EditTaskPopup: FC<EditTaskPopupProps> = ({
 
               <div className={styles.formPopup__submit}>
                 <Button
-                  title="Edit"
+                  title="Сохранить"
                   style={{ width: "100%" }}
                   type="submit"
                   disabled={isLoading}

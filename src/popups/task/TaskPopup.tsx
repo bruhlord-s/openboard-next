@@ -35,7 +35,7 @@ const TaskPopup: FC<TaskPopupProps> = ({
     <BasePopup
       open={open}
       setOpen={setOpen}
-      title="Task"
+      title={`Задача #${task.id}`}
       toolbar={
         <TaskToolbar
           task={task}
@@ -50,11 +50,11 @@ const TaskPopup: FC<TaskPopupProps> = ({
           <div className={styles2.popup__body}>
             <div className={styles2.popup__column} style={{ width: 300 }}>
               <div className={styles2.popup__block}>
-                <p className={styles2.popup__blockName}>Name</p>
+                <p className={styles2.popup__blockName}>Название</p>
                 <p className={styles2.popup__blockValue}>{task.name}</p>
               </div>
               <div className={styles2.popup__block}>
-                <p className={styles2.popup__blockName}>Board</p>
+                <p className={styles2.popup__blockName}>Доска</p>
                 <div className={styles2.popup__blockValueRow}>
                   <span
                     className={styles2.popup__boardColor}
@@ -65,28 +65,32 @@ const TaskPopup: FC<TaskPopupProps> = ({
               </div>
 
               <div className={styles2.popup__block}>
-                <p className={styles2.popup__blockName}>Assignee</p>
+                <p className={styles2.popup__blockName}>Ответственный</p>
                 <div className={styles2.popup__blockValueRow}>
                   <Avatar width={36} height={36} src="/images/avatar.png" />
                   <p className={styles2.popup__blockValue}>{task.user.name}</p>
                 </div>
               </div>
               <div className={styles2.popup__block}>
-                <p className={styles2.popup__blockName}>Author</p>
+                <p className={styles2.popup__blockName}>Автор</p>
                 <div className={styles2.popup__blockValueRow}>
                   <Avatar width={36} height={36} src="/images/avatar.png" />
                   <p className={styles2.popup__blockValue}>{task.user.name}</p>
                 </div>
               </div>
               <div className={styles2.popup__time}>
+                {!!task.time_estimated && (
+                  <div className={styles2.popup__block}>
+                    <p className={styles2.popup__blockName}>
+                      Предпологаемое время
+                    </p>
+                    <p className={styles2.popup__blockValue}>
+                      {convertSecondsToTime(task.time_estimated)}
+                    </p>
+                  </div>
+                )}
                 <div className={styles2.popup__block}>
-                  <p className={styles2.popup__blockName}>Time Estimated</p>
-                  <p className={styles2.popup__blockValue}>
-                    {convertSecondsToTime(task.time_estimated)}
-                  </p>
-                </div>
-                <div className={styles2.popup__block}>
-                  <p className={styles2.popup__blockName}>Time Spent</p>
+                  <p className={styles2.popup__blockName}>Затраченное время</p>
                   <p className={styles2.popup__blockValue}>0h</p>
                 </div>
               </div>
@@ -96,14 +100,16 @@ const TaskPopup: FC<TaskPopupProps> = ({
               style={{ width: 400, justifyContent: "space-between" }}
             >
               <div className={styles2.popup__block}>
-                <p className={styles2.popup__blockName}>Description</p>
+                <p className={styles2.popup__blockName}>Описание</p>
                 <p className={styles2.popup__blockValueDescription}>
                   {task.description ? task.description : "No description =("}
                 </p>
               </div>
               {task.attachments.length > 0 && (
                 <div className={styles2.popup__attachments}>
-                  <p className={styles2.popup__blockName}>Attachments</p>
+                  <p className={styles2.popup__blockName}>
+                    Прикрепленные файлы
+                  </p>
                   <div className={styles2.popup__attachmentsRow}>
                     {task.attachments.map((attachment, i) => (
                       <a

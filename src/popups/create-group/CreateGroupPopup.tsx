@@ -35,12 +35,14 @@ const CreateGroupPopup: FC<PopupProps> = ({ open, setOpen }: PopupProps) => {
   };
 
   return (
-    <BasePopup open={open} setOpen={setOpen} title="Create new group">
+    <BasePopup open={open} setOpen={setOpen} title="Создать группу">
       <div className={styles.formPopup}>
         <Formik
           initialValues={{ name: "" }}
           validationSchema={Yup.object({
-            name: Yup.string().required("Required").min(3, "Min 3 characters"),
+            name: Yup.string()
+              .required("Обязательно")
+              .min(3, "Минимум 3 символа"),
           })}
           onSubmit={(values: CreateGroupValues) => createGroup(values)}
         >
@@ -48,15 +50,15 @@ const CreateGroupPopup: FC<PopupProps> = ({ open, setOpen }: PopupProps) => {
             <div className={styles.formPopup__form}>
               <div className={styles.formPopup__inputs}>
                 <InputBlock
-                  label="Name"
+                  label="Название"
                   name="name"
                   type="text"
-                  placeholder="Amoguses"
+                  placeholder="Пчелиный улей"
                 />
               </div>
               <div className={styles.formPopup__submit}>
                 <Button
-                  title="Create"
+                  title="Создать"
                   style={{ width: "100%" }}
                   type="submit"
                   disabled={isLoading}

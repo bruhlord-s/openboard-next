@@ -24,10 +24,13 @@ const DashboardTask: FC<DashboardTaskProps> = ({
 
   return (
     <div className={styles.dashboardTask} onClick={() => setIsPopupOpen(true)}>
-      <p className={styles.dashboardTask__title}>{task.name}</p>
+      <p className={styles.dashboardTask__title}>
+        <span className={styles.dashboardTask__number}>#{task.id}</span>
+        {task.name}
+      </p>
       <div className={styles.dashboardTask__info}>
         <Assignee user={task.user} />
-        <TimeEstimated time={task.time_estimated} />
+        {!!task.time_estimated && <TimeEstimated time={task.time_estimated} />}
       </div>
 
       <TaskPopup

@@ -40,21 +40,21 @@ const DeleteGroupPopup: FC<DeleteGroupPopupProps> = ({
   };
 
   return (
-    <BasePopup open={open} setOpen={setOpen} title="Delete group?">
+    <BasePopup open={open} setOpen={setOpen} title="Удалить группу?">
       <div className={styles.deletePopup}>
         <p className={styles.deletePopup__message}>
-          Are you sure you want to delete group {group.name}?
+          Вы уверены что хотите удалить {group.name}?
         </p>
         <div className={styles.deletePopup__options}>
           <Button
-            title="Delete"
+            title="Удалить"
             style={{ width: 100 }}
             type="submit"
             disabled={isLoading}
             onClick={() => deleteGroup()}
           />
           <Button
-            title="Cancel"
+            title="Отмена"
             style={{
               width: 100,
               backgroundColor: "#fff",

@@ -45,12 +45,14 @@ const EditGroupPopup: FC<EditGroupPopupProps> = ({
   };
 
   return (
-    <BasePopup open={open} setOpen={setOpen} title="Edit group">
+    <BasePopup open={open} setOpen={setOpen} title="Редактировать группу">
       <div className={styles.formPopup}>
         <Formik
           initialValues={{ name: group.name }}
           validationSchema={Yup.object({
-            name: Yup.string().required("Required").min(3, "Min 3 characters"),
+            name: Yup.string()
+              .required("Обязательно")
+              .min(3, "Минимум 3 символа"),
           })}
           onSubmit={(values: EditGroupValues) => editGroup(values)}
         >
@@ -58,15 +60,15 @@ const EditGroupPopup: FC<EditGroupPopupProps> = ({
             <div className={styles.formPopup__form}>
               <div className={styles.formPopup__inputs}>
                 <InputBlock
-                  label="Name"
+                  label="Название"
                   name="name"
                   type="text"
-                  placeholder="Amoguses"
+                  placeholder="Пчелиный улей"
                 />
               </div>
               <div className={styles.formPopup__submit}>
                 <Button
-                  title="Edit"
+                  title="Сохранить"
                   style={{ width: "100%" }}
                   type="submit"
                   disabled={isLoading}

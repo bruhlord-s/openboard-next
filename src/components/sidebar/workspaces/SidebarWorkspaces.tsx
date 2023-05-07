@@ -22,10 +22,10 @@ const SidebarWorkspaces: FC<SidebarWorkspacesProps> = ({
 
   return (
     <div className={styles.sidebarWorkspaces}>
-      <h3 className={styles.sidebarWorkspaces__title}>Your workspaces</h3>
+      <h3 className={styles.sidebarWorkspaces__title}>Ваши проекты</h3>
       {groups.length < 1 && (
         <p className={styles.sidebarWorkspaces__emptyMessage}>
-          You have no groups
+          У вас нет групп
         </p>
       )}
       <div className={styles.sidebarWorkspaces__groups}>
@@ -35,7 +35,7 @@ const SidebarWorkspaces: FC<SidebarWorkspacesProps> = ({
       </div>
       <div className={styles.sidebarWorkspaces__addGroup}>
         <Button
-          title="Create new group"
+          title="Создать группу"
           style={{ width: 200 }}
           onClick={openCreateGroupPopup}
         />

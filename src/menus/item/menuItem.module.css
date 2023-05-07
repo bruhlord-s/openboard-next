@@ -25,7 +25,7 @@
 /* TODO: make proper modificators */
 .menuItem__title,
 .menuItem__title_warning {
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .menuItem__title_warning {

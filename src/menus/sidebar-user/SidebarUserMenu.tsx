@@ -20,8 +20,13 @@ const SidebarUserMenu: FC<MenuProps> = ({ trigger, position }: MenuProps) => {
     <BaseMenu trigger={trigger} position={position}>
       <div className={styles.menu__items}>
         <MenuItem
-          iconSrc="/icons/logout.svg"
-          title="Logout"
+          iconSrc="/icons/material-person.svg"
+          title="Профиль"
+          onClick={logout}
+        />
+        <MenuItem
+          iconSrc="/icons/material-logout.svg"
+          title="Выйти"
           onClick={logout}
           warning={true}
         />

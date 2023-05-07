@@ -45,12 +45,14 @@ const EditWorkspacePopup: FC<EditWorkspacePopupProps> = ({
   };
 
   return (
-    <BasePopup open={open} setOpen={setOpen} title="Edit workspace">
+    <BasePopup open={open} setOpen={setOpen} title="Редактировать проект">
       <div className={styles.formPopup}>
         <Formik
           initialValues={{ name: workspace.name }}
           validationSchema={Yup.object({
-            name: Yup.string().required("Required").min(3, "Min 3 characters"),
+            name: Yup.string()
+              .required("Обязательно")
+              .min(3, "Минимум 3 символа"),
           })}
           onSubmit={(values: EditWorkspaceValues) => editWorkspace(values)}
         >
@@ -58,15 +60,15 @@ const EditWorkspacePopup: FC<EditWorkspacePopupProps> = ({
             <div className={styles.formPopup__form}>
               <div className={styles.formPopup__inputs}>
                 <InputBlock
-                  label="Name"
+                  label="Название"
                   name="name"
                   type="text"
-                  placeholder="Amoguses"
+                  placeholder="Проект А"
                 />
               </div>
               <div className={styles.formPopup__submit}>
                 <Button
-                  title="Edit"
+                  title="Сохранить"
                   style={{ width: "100%" }}
                   type="submit"
                   disabled={isLoading}

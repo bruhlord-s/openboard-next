@@ -46,12 +46,14 @@ const EditBoardPopup: FC<EditBoardPopupProps> = ({
   };
 
   return (
-    <BasePopup open={open} setOpen={setOpen} title="Create new board">
+    <BasePopup open={open} setOpen={setOpen} title="Редактировать доску">
       <div className={styles.formPopup}>
         <Formik
           initialValues={{ name: board.name, color }}
           validationSchema={Yup.object({
-            name: Yup.string().required("Required").min(3, "Min 3 characters"),
+            name: Yup.string()
+              .required("Обязательно")
+              .min(3, "Минимум 3 символа"),
           })}
           onSubmit={(values: EditBoardValues) =>
             editBoard({ ...values, color })
@@ -62,10 +64,10 @@ const EditBoardPopup: FC<EditBoardPopupProps> = ({
               <div className={styles.formPopup__inputs}>
                 <div className={styles.formPopup__row}>
                   <InputBlock
-                    label="Name"
+                    label="Название"
                     name="name"
                     type="text"
-                    placeholder="Amoguses"
+                    placeholder="Интересные задачи"
                   />
                   <input
                     className={styles.formPopup__colorInput}
@@ -77,7 +79,7 @@ const EditBoardPopup: FC<EditBoardPopupProps> = ({
               </div>
               <div className={styles.formPopup__submit}>
                 <Button
-                  title="Create"
+                  title="Сохранить"
                   style={{ width: "100%" }}
                   type="submit"
                   disabled={isLoading}

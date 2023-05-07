@@ -40,21 +40,21 @@ const DeleteTaskPopup: FC<DeleteTaskPopupProps> = ({
   };
 
   return (
-    <BasePopup open={open} setOpen={setOpen} title="Delete task?">
+    <BasePopup open={open} setOpen={setOpen} title="Удалить задачу?">
       <div className={styles.deletePopup}>
         <p className={styles.deletePopup__message}>
-          Are you sure you want to delete task {task.name}?
+          Вы уверены что хотите удалить {task.name}?
         </p>
         <div className={styles.deletePopup__options}>
           <Button
-            title="Delete"
+            title="Удалить"
             style={{ width: 100 }}
             type="submit"
             disabled={isLoading}
             onClick={() => deleteTask()}
           />
           <Button
-            title="Cancel"
+            title="Отмена"
             style={{
               width: 100,
               backgroundColor: "#fff",

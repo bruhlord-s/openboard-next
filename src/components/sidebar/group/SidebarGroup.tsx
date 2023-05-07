@@ -36,7 +36,7 @@ const SidebarGroup: FC<SidebarGroupProps> = ({ group }: SidebarGroupProps) => {
         // if group has no workspaces
         isOpen && group.workspaces.length < 1 && (
           <p className={styles.sidebarGroup__noWorkspaces}>
-            No workspaces for this group =/
+            В этой группе нет проектов =/
           </p>
         )
       }

@@ -29,14 +29,14 @@ const TaskAttachments: FC<TaskAttachmentsProps> = ({
   return (
     <div className={styles.attachments}>
       <div className={styles.attachments__header}>
-        <p className={styles.attachments__label}>Attachments</p>
+        <p className={styles.attachments__label}>Прикрепленные файлы</p>
         <p
           className={styles.attachments__btn}
           onClick={() => {
             fileInputRef.current?.click();
           }}
         >
-          Upload
+          Добавить
         </p>
         <input
           type="file"
@@ -51,7 +51,7 @@ const TaskAttachments: FC<TaskAttachmentsProps> = ({
         {attachments?.length < 1 && (
           <div className={styles.attachments__empty}>
             <p>＞﹏＜</p>
-            <p>No attachments</p>
+            <p>Нет файлов</p>
           </div>
         )}
         {attachments?.length > 0 && (

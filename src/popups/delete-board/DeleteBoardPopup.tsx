@@ -40,21 +40,21 @@ const DeleteBoardPopup: FC<DeleteBoardPopupProps> = ({
   };
 
   return (
-    <BasePopup open={open} setOpen={setOpen} title="Delete board?">
+    <BasePopup open={open} setOpen={setOpen} title="Удалить доску?">
       <div className={styles.deletePopup}>
         <p className={styles.deletePopup__message}>
-          Are you sure you want to delete board {board.name}?
+          Вы уверены что хотите удалить {board.name}?
         </p>
         <div className={styles.deletePopup__options}>
           <Button
-            title="Delete"
+            title="Удалить"
             style={{ width: 100 }}
             type="submit"
             disabled={isLoading}
             onClick={() => deleteBoard()}
           />
           <Button
-            title="Cancel"
+            title="Отмена"
             style={{
               width: 100,
               backgroundColor: "#fff",
