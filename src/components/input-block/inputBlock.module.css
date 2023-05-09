@@ -23,6 +23,10 @@
   outline: none;
 }
 
+.inputBlock__input:disabled {
+  opacity: 0.5;
+}
+
 .inputBlock__input::placeholder {
   color: var(--gray);
 }

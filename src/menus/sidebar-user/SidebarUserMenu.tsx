@@ -6,7 +6,15 @@ import { MenuProps } from "../types/MenuProps";
 
 import styles from "./sidebarUserMenu.module.css";
 
-const SidebarUserMenu: FC<MenuProps> = ({ trigger, position }: MenuProps) => {
+interface SidebarUserMenuProps extends MenuProps {
+  setIsProfilePopupOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const SidebarUserMenu: FC<SidebarUserMenuProps> = ({
+  trigger,
+  position,
+  setIsProfilePopupOpen,
+}: SidebarUserMenuProps) => {
   const router = useRouter();
 
   const logout = () => {
@@ -16,13 +24,30 @@ const SidebarUserMenu: FC<MenuProps> = ({ trigger, position }: MenuProps) => {
     }
   };
 
+  const openModalWithPreclick = (
+    setModalOpen: React.Dispatch<React.SetStateAction<boolean>>
+  ) => {
+    const mouseClickEvents = ["mousedown", "click", "mouseup"];
+    mouseClickEvents.forEach((mouseEventType) =>
+      document.querySelector("body")!.dispatchEvent(
+        new MouseEvent(mouseEventType, {
+          view: window,
+          bubbles: true,
+          cancelable: true,
+          buttons: 1,
+        })
+      )
+    );
+    setModalOpen(true);
+  };
+
   return (
     <BaseMenu trigger={trigger} position={position}>
       <div className={styles.menu__items}>
         <MenuItem
           iconSrc="/icons/material-person.svg"
           title="Профиль"
-          onClick={logout}
+          onClick={() => openModalWithPreclick(setIsProfilePopupOpen)}
         />
         <MenuItem
           iconSrc="/icons/material-logout.svg"

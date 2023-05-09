@@ -1,0 +1,32 @@
+.form {
+  margin: 20px 0;
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+}
+
+.form__fields {
+  width: 350px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form__avatar {
+  width: 120px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+
+  cursor: pointer;
+  user-select: none;
+}
+
+.form__avatar p {
+  color: var(--light-gray);
+  font-size: 13px;
+  text-align: center;
+}

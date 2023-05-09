@@ -11,7 +11,7 @@ interface AssigneeProps {
 const Assignee: FC<AssigneeProps> = ({ user }: AssigneeProps) => {
   return (
     <div className={styles.assignee}>
-      <Avatar width={20} height={20} src={"/images/avatar.png"} />
+      <Avatar width={20} height={20} src={user.avatar} />
       <p className={styles.assignee__name}>{user.name}</p>
     </div>
   );

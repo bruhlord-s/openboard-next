@@ -1,6 +1,6 @@
 import SidebarUserMenu from "@/menus/sidebar-user/SidebarUserMenu";
 import User from "@/types/User";
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import Logo from "../logo/Logo";
 
 import styles from "./sidebar.module.css";
@@ -12,6 +12,10 @@ interface SidebarProps {
 }
 
 const Sidebar: FC<SidebarProps> = ({ user }: SidebarProps) => {
+  const [isProfilePopupOpen, setIsProfilePopupOpen] = useState<boolean>(false);
+  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] =
+    useState<boolean>(false);
+
   return (
     <aside className={styles.sidebar}>
       <div className={styles.sidebar__logo}>
@@ -21,9 +25,16 @@ const Sidebar: FC<SidebarProps> = ({ user }: SidebarProps) => {
         <SidebarWorkspaces groups={user.groups} />
       </div>
       <SidebarUserMenu
+        setIsProfilePopupOpen={setIsProfilePopupOpen}
         trigger={
           <div className={styles.sidebar__user}>
-            <SidebarUser email={user.email} name={user.name} />
+            <SidebarUser
+              user={user}
+              isProfilePopupOpen={isProfilePopupOpen}
+              setIsProfilePopupOpen={setIsProfilePopupOpen}
+              isEditProfilePopupOpen={isEditProfilePopupOpen}
+              setIsEditProfilePopupOpen={setIsEditProfilePopupOpen}
+            />
           </div>
         }
         position="right bottom"

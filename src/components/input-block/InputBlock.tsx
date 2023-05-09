@@ -10,6 +10,7 @@ interface InputBlockProps {
   placeholder?: string;
   as?: "textarea";
   rows?: number;
+  disabled?: boolean;
 }
 
 const InputBlock: FC<InputBlockProps> = ({
@@ -19,6 +20,7 @@ const InputBlock: FC<InputBlockProps> = ({
   placeholder,
   as,
   rows,
+  disabled,
 }: InputBlockProps) => {
   return (
     <div className={styles.inputBlock}>
@@ -38,6 +40,7 @@ const InputBlock: FC<InputBlockProps> = ({
         placeholder={placeholder}
         as={as}
         rows={rows}
+        disabled={disabled}
       />
     </div>
   );

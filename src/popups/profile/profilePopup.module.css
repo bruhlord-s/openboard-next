@@ -1,0 +1,15 @@
+.profilePopup {
+  display: flex;
+  gap: 32px;
+  margin-top: 16px;
+}
+
+.profilePopup__userData {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.profilePopup__name {
+  color: var(--light-gray);
+}

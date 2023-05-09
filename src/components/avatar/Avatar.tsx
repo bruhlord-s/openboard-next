@@ -6,13 +6,16 @@ import styles from "./avatar.module.css";
 interface AvatarProps {
   width: number;
   height: number;
-  src: string;
+  src?: string;
 }
 
 const Avatar: FC<AvatarProps> = ({ width, height, src }: AvatarProps) => {
   return (
-    <div className={styles.avatar} style={{ height: height }}>
-      <Image width={width} height={height} src={src} alt={"avatar"} />
+    <div
+      className={styles.avatar}
+      style={{ width: width, height: height, backgroundImage: `url(${src})` }}
+    >
+      {/* <img src={src ?? "/images/avatar.png"} alt={"avatar"} /> */}
     </div>
   );
 };
