@@ -5,6 +5,7 @@ import styles from "./dashboardHeader.module.css";
 import Workspace from "@/types/Workspace";
 import CreateBoardPopup from "@/popups/create-board/CreateBoardPopup";
 import CreateTaskPopup from "@/popups/create-task/CreateTaskPopup";
+import DashboardMembers from "../members/DashboardMembers";
 
 interface DashboardHeaderProps {
   workspace: Workspace;
@@ -20,7 +21,11 @@ const DashboardHeader: FC<DashboardHeaderProps> = ({
 
   return (
     <header className={styles.dashboardHeader}>
-      <h2 className={styles.dashboardHeader__title}>{workspace.name}</h2>
+      <div className={styles.dashboardHeader__info}>
+        <h2 className={styles.dashboardHeader__title}>{workspace.name} </h2>
+        <span className={styles.dashboardHeader__titleDivider}>/</span>
+        <DashboardMembers users={workspace.group.users} />
+      </div>
       <div className={styles.dashboardHeader__actions}>
         <Button
           title="Создать задачу"

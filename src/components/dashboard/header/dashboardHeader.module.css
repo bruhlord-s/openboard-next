@@ -4,8 +4,20 @@
   justify-content: space-between;
 }
 
+.dashboardHeader__info {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
 .dashboardHeader__title {
   font-weight: 500;
+}
+
+.dashboardHeader__titleDivider {
+  color: var(--light-gray);
+  font-weight: 500;
+  font-size: 20px;
 }
 
 .dashboardHeader__actions {

@@ -1,0 +1,24 @@
+.dashboardMembers {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.dashboardMembers__avatars {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: fit-content;
+}
+
+.dashboardMember:not(:nth-child(1)) {
+  position: relative;
+}
+
+.dashboardMember div {
+  box-shadow: -3px 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+.dashboardMembers__count {
+  position: relative;
+}
