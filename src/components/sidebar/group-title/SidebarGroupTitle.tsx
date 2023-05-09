@@ -12,6 +12,7 @@ interface SidebarGroupTitleProps {
   setIsCreateModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
   setIsEditModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
   setIsDeleteModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsInviteGroupOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const SidebarGroupTitle: FC<SidebarGroupTitleProps> = ({
@@ -21,6 +22,7 @@ const SidebarGroupTitle: FC<SidebarGroupTitleProps> = ({
   setIsCreateModalOpen,
   setIsEditModalOpen,
   setIsDeleteModalOpen,
+  setIsInviteGroupOpen,
 }: SidebarGroupTitleProps) => {
   return (
     <div className={styles.sidebarGroupTitle}>
@@ -54,6 +56,7 @@ const SidebarGroupTitle: FC<SidebarGroupTitleProps> = ({
           group={group}
           setIsEditModalOpen={setIsEditModalOpen}
           setIsDeleteModalOpen={setIsDeleteModalOpen}
+          setIsInviteModalOpen={setIsInviteGroupOpen}
         />
       </div>
     </div>

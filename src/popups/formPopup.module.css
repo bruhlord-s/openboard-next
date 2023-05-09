@@ -4,6 +4,16 @@
   gap: 16px;
 }
 
+.formPopup__error {
+  width: 100%;
+  background-color: var(--error-color);
+  color: #fff;
+  text-align: center;
+  padding: 8px 0;
+  margin-bottom: 16px;
+  border-radius: 8px;
+}
+
 .formPopup__row {
   display: flex;
   gap: 20px;

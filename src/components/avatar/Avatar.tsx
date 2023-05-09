@@ -13,7 +13,7 @@ const Avatar: FC<AvatarProps> = ({ width, height, src }: AvatarProps) => {
   return (
     <div
       className={styles.avatar}
-      style={{ width: width, height: height, backgroundImage: `url(${src})` }}
+      style={{ width: width, height: height, backgroundImage: `url(${src ? src : "/images/avatar.png"})` }}
     >
       {/* <img src={src ?? "/images/avatar.png"} alt={"avatar"} /> */}
     </div>

@@ -7,6 +7,7 @@ import styles from "./sidebarGroup.module.css";
 import EditGroupPopup from "@/popups/edit-group/EditGroupPopup";
 import DeleteGroupPopup from "@/popups/delete-group/DeleteGroupPopup";
 import CreateWorkspacePopup from "@/popups/create-workspace/CreateWorkspacePopup";
+import InviteGroupPopup from "@/popups/invite-group/InviteGroupPopup";
 
 interface SidebarGroupProps {
   group: Group;
@@ -15,6 +16,7 @@ interface SidebarGroupProps {
 const SidebarGroup: FC<SidebarGroupProps> = ({ group }: SidebarGroupProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState<boolean>(false);
+  const [isInviteModalOpen, setIsInviteModalOpen] = useState<boolean>(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState<boolean>(false);
   const [isCreteModalOpen, setIsCreateModalOpen] = useState<boolean>(false); // modal to create workspace
 
@@ -27,6 +29,7 @@ const SidebarGroup: FC<SidebarGroupProps> = ({ group }: SidebarGroupProps) => {
         setIsCreateModalOpen={setIsCreateModalOpen}
         setIsEditModalOpen={setIsEditModalOpen}
         setIsDeleteModalOpen={setIsDeleteModalOpen}
+        setIsInviteGroupOpen={setIsInviteModalOpen}
       />
       {isOpen &&
         group.workspaces.map((workspace, index) => (
@@ -54,6 +57,11 @@ const SidebarGroup: FC<SidebarGroupProps> = ({ group }: SidebarGroupProps) => {
       <DeleteGroupPopup
         open={isDeleteModalOpen}
         setOpen={setIsDeleteModalOpen}
+        group={group}
+      />
+      <InviteGroupPopup
+        open={isInviteModalOpen}
+        setOpen={setIsInviteModalOpen}
         group={group}
       />
     </div>

@@ -11,6 +11,7 @@ interface SidebarGroupMenuProps extends MenuProps {
   group: Group;
   setIsEditModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
   setIsDeleteModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsInviteModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const SidebarGroupMenu: FC<SidebarGroupMenuProps> = ({
@@ -18,6 +19,7 @@ const SidebarGroupMenu: FC<SidebarGroupMenuProps> = ({
   position,
   setIsEditModalOpen,
   setIsDeleteModalOpen,
+  setIsInviteModalOpen,
 }: SidebarGroupMenuProps) => {
   // greatest trick i've ever used
   // auto closes this menu when you choose option from it
@@ -42,11 +44,11 @@ const SidebarGroupMenu: FC<SidebarGroupMenuProps> = ({
   return (
     <BaseMenu trigger={trigger} position={position}>
       <div className={styles.menu__items}>
-        {/* <MenuItem
-          iconSrc="/icons/logout.svg"
-          title="Invite"
-          onClick={() => {}}
-        /> */}
+        <MenuItem
+          iconSrc="/icons/material-invite.svg"
+          title="Пригласить"
+          onClick={() => openModalWithPreclick(setIsInviteModalOpen)}
+        />
         <MenuItem
           iconSrc="/icons/edit.svg"
           title="Изменить"
