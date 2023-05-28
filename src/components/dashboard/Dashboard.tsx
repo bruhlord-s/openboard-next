@@ -59,11 +59,12 @@ const Dashboard: FC = () => {
 
   useEffect(() => {
     fetchWorkspace();
+    //eslint-disable-next-line
   }, [workspaceId]);
 
   useEffect(() => {
     setRerenderKey(rerenderKey + 1);
-  }, [workspace]);
+  }, [workspace, setRerenderKey]);
 
   return workspaceId !== null ? (
     <WorkspaceDataContext.Provider value={workspace}>

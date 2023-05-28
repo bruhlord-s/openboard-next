@@ -8,6 +8,7 @@ import * as Yup from "yup";
 
 import styles from "./authSignIn.module.css";
 import { SignInValues } from "./types/SignInValues";
+import Link from "next/link";
 
 const AuthSignIn: FC = () => {
   const router = useRouter();
@@ -67,7 +68,7 @@ const AuthSignIn: FC = () => {
 
               <span className={styles.authSignIn__link}>
                 <p>Еще нет аккаунта?</p>
-                <a href="/register">Создайте</a>
+                <Link href="/register">Создайте</Link>
               </span>
             </div>
           </div>

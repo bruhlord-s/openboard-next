@@ -86,7 +86,7 @@ const CreateTaskPopup: FC<CreateTaskPopupProps> = ({
   useEffect(() => {
     setSelectedBoard(boardOptions[0]);
     setSelectedAssignee(assigneeOptions[0]);
-  }, []);
+  }, [setSelectedBoard, setSelectedAssignee]);
 
   const createTask = (value: CreateTaskValues) => {
     if (isLoading) return;
@@ -158,7 +158,9 @@ const CreateTaskPopup: FC<CreateTaskPopupProps> = ({
                       options={boardOptions}
                       defaultValue={boardOptions[0]}
                       styles={selectStyles}
-                      onChange={(value) => setSelectedBoard(value)}
+                      onChange={(value) =>
+                        setSelectedBoard(value as SingleValue<SelectValue>)
+                      }
                     />
                   </div>
                   <div className={styles2.form__select}>
@@ -167,7 +169,9 @@ const CreateTaskPopup: FC<CreateTaskPopupProps> = ({
                       options={assigneeOptions}
                       defaultValue={assigneeOptions[0]}
                       styles={selectStyles}
-                      onChange={(value) => setSelectedAssignee(value)}
+                      onChange={(value) =>
+                        setSelectedAssignee(value as SingleValue<SelectValue>)
+                      }
                     />
                   </div>
                   <InputBlock

@@ -186,7 +186,9 @@ const EditTaskPopup: FC<EditTaskPopupProps> = ({
                         ) ?? boardOptions[0]
                       }
                       styles={selectStyles}
-                      onChange={(value) => setSelectedBoard(value)}
+                      onChange={(value) =>
+                        setSelectedBoard(value as SingleValue<SelectValue>)
+                      }
                     />
                   </div>
                   <div className={styles2.form__select}>
@@ -200,7 +202,9 @@ const EditTaskPopup: FC<EditTaskPopupProps> = ({
                         ) ?? assigneeOptions[0]
                       }
                       styles={selectStyles}
-                      onChange={(value) => setSelectedAssignee(value)}
+                      onChange={(value) =>
+                        setSelectedAssignee(value as SingleValue<SelectValue>)
+                      }
                     />
                   </div>
                   <InputBlock

@@ -115,6 +115,7 @@ const TaskPopup: FC<TaskPopupProps> = ({
                       <a
                         href={process.env.NEXT_PUBLIC_API_URL + attachment.file}
                         target="_blank"
+                        rel="noreferrer"
                         key={i}
                       >
                         <img

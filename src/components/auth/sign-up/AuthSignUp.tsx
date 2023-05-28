@@ -9,6 +9,7 @@ import * as Yup from "yup";
 
 import styles from "./authSignUp.module.css";
 import SignUpValues from "./types/SignUpValues";
+import Link from "next/link";
 
 const AuthSignUp: FC = () => {
   const router = useRouter();
@@ -56,7 +57,7 @@ const AuthSignUp: FC = () => {
             .min(8, "Минимум 8 символов")
             .required("Обязательно"),
           password_confirmation: Yup.string().oneOf(
-            [Yup.ref("password"), null],
+            [Yup.ref("password")],
             "Не совпадает"
           ),
         })}
@@ -100,7 +101,7 @@ const AuthSignUp: FC = () => {
 
               <span className={styles.authSignUp__link}>
                 <p>Уже есть аккаунт?</p>
-                <a href="/login">Войдите</a>
+                <Link href="/login">Войдите</Link>
               </span>
             </div>
           </div>
