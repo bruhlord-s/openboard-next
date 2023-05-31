@@ -71,13 +71,6 @@ const TaskPopup: FC<TaskPopupProps> = ({
                   <p className={styles2.popup__blockValue}>{task.user.name}</p>
                 </div>
               </div>
-              <div className={styles2.popup__block}>
-                <p className={styles2.popup__blockName}>Автор</p>
-                <div className={styles2.popup__blockValueRow}>
-                  <Avatar width={36} height={36} src={task.user.avatar} />
-                  <p className={styles2.popup__blockValue}>{task.user.name}</p>
-                </div>
-              </div>
               <div className={styles2.popup__time}>
                 {!!task.time_estimated && (
                   <div className={styles2.popup__block}>
@@ -89,10 +82,6 @@ const TaskPopup: FC<TaskPopupProps> = ({
                     </p>
                   </div>
                 )}
-                <div className={styles2.popup__block}>
-                  <p className={styles2.popup__blockName}>Затраченное время</p>
-                  <p className={styles2.popup__blockValue}>0h</p>
-                </div>
               </div>
             </div>
             <div

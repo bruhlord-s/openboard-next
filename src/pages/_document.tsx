@@ -5,10 +5,6 @@ export default function Document() {
     <Html lang="en">
       <Head>
         <title>Openboard</title>
-        <meta
-          http-equiv="Content-Security-Policy"
-          content="upgrade-insecure-requests"
-        />
       </Head>
       <body>
         <Main />
