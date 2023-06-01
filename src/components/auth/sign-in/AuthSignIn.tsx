@@ -39,7 +39,7 @@ const AuthSignIn: FC = () => {
   return (
     <div className={styles.authSignIn}>
       {!!error && (
-        <div className={styles.authSignUp__error}>
+        <div className={styles.authSignIn__error}>
           <ErrorMessage message={error} />
         </div>
       )}

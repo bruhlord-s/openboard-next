@@ -30,6 +30,10 @@
   gap: 8px;
 }
 
+.authSignIn__error {
+  margin-bottom: 16px;
+}
+
 .authSignIn__link a {
   color: var(--accent-color);
   text-decoration: underline;
