@@ -9,6 +9,7 @@ import * as Yup from "yup";
 import styles from "./authSignIn.module.css";
 import { SignInValues } from "./types/SignInValues";
 import Link from "next/link";
+import ErrorMessage from "@/components/error-message/ErrorMessage";
 
 const AuthSignIn: FC = () => {
   const router = useRouter();
@@ -37,6 +38,11 @@ const AuthSignIn: FC = () => {
 
   return (
     <div className={styles.authSignIn}>
+      {!!error && (
+        <div className={styles.authSignUp__error}>
+          <ErrorMessage message={error} />
+        </div>
+      )}
       <Formik
         initialValues={{ email: "", password: "" }}
         validationSchema={Yup.object({
